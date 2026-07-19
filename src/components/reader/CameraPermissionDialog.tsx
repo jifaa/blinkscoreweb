@@ -94,13 +94,14 @@ export function useCameraDevices() {
   const [devices, setDevices] = useState<CameraDevice[]>([])
   const [isLoading, setIsLoading] = useState(true)
 
-  // Check if camera is supported in this browser
+  // Check if camera is supported in this browser - computed synchronously
   const isSupported = typeof navigator !== 'undefined' && !!navigator.mediaDevices?.getUserMedia
 
   useEffect(() => {
     if (!isSupported) {
-      setIsLoading(false)
-      return
+      // Use setTimeout to avoid synchronous setState in effect
+      const timer = setTimeout(() => setIsLoading(false), 0)
+      return () => clearTimeout(timer)
     }
 
     const loadDevices = async () => {

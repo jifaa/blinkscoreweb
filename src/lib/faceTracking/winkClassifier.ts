@@ -5,6 +5,7 @@ import type { FaceBlinkScores, CalibrationData, CalibrationResult } from "./type
 import { useReaderStore } from "~/store/useReaderStore"
 
 const NEUTRAL_HIGH_THRESHOLD = 0.15 // Both eyes should be below this when neutral
+const MIN_THRESHOLD_GAP = 0.1 // Minimum gap between high and low thresholds
 
 export function useWinkClassifier() {
   const { settings } = useReaderStore()
@@ -98,16 +99,34 @@ export function calculateCalibrationResult(data: CalibrationData): CalibrationRe
   // Calculate thresholds
   // highThreshold: above this = eye is closed (wink)
   // lowThreshold: below this = eye is open
-  const highThreshold = Math.max(
+  let highThreshold = Math.max(
     NEUTRAL_HIGH_THRESHOLD,
     (avgLeftWink.left + avgRightWink.right) / 2
   )
 
-  const lowThreshold = Math.min(avgNeutral.left, avgNeutral.right) + 0.1
+  let lowThreshold = Math.min(avgNeutral.left, avgNeutral.right) + 0.1
+
+  // Ensure we have a valid, non-overlapping threshold pair
+  // If highThreshold <= lowThreshold + MIN_GAP, calibration failed - use safe defaults
+  if (highThreshold <= lowThreshold + MIN_THRESHOLD_GAP) {
+    console.warn(
+      "[BlinkScore] Calibration produced invalid thresholds. " +
+      `highThreshold (${highThreshold.toFixed(3)}) should be > lowThreshold + gap (${(lowThreshold + MIN_THRESHOLD_GAP).toFixed(3)}). ` +
+      "This may indicate bad lighting, camera angle, or incomplete wink samples. Using safe defaults."
+    )
+
+    // Fall back to safe default thresholds
+    highThreshold = 0.6
+    lowThreshold = 0.2
+  }
+
+  // Cap and floor the final values
+  highThreshold = Math.min(highThreshold, 0.8) // Cap at 0.8
+  lowThreshold = Math.max(lowThreshold, 0.1) // Minimum 0.1
 
   return {
-    highThreshold: Math.min(highThreshold, 0.8), // Cap at 0.8
-    lowThreshold: Math.max(lowThreshold, 0.1), // Minimum 0.1
+    highThreshold,
+    lowThreshold,
     recommendedDuration: 200, // ms
   }
 }

@@ -60,10 +60,12 @@
 
 /* === TYPOGRAPHY SCALE === */
 /* Linear Display for headlines, Linear Text for body */
+/* Font variables are set by next/font in layout.tsx via --font-sans and --font-mono */
 :root {
-  --font-display: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-sans: var(--font-display);
-  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
+  /* Font families - sourced from next/font (Inter + JetBrains Mono) */
+  --font-display: var(--font-sans);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
 
   /* Type scale - applied via utility classes */
   --text-display-xl: 80px;

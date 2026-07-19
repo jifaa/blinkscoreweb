@@ -100,11 +100,11 @@ export function CameraPreview({ onBlinkScores, className }: CameraPreviewProps) 
         className={`w-full h-full object-cover ${camera.mirrored ? "scale-x-[-1]" : ""}`}
       />
 
-      {/* Landmark overlay canvas */}
+      {/* Landmark overlay canvas - NOT mirrored via CSS, mirroring handled in JS */}
       {camera.showOverlay && (
         <canvas
           ref={canvasRef}
-          className={`absolute inset-0 w-full h-full ${camera.mirrored ? "scale-x-[-1]" : ""}`}
+          className="absolute inset-0 w-full h-full"
         />
       )}
 

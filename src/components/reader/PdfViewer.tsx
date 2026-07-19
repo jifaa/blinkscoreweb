@@ -57,15 +57,18 @@ export function PdfViewer({ pdfUrl, onTotalPages }: PdfViewerProps) {
     }
 
     loadPdf()
+  }, [pdfUrl, onTotalPages])
 
+  // Cleanup effect for PDF document
+  useEffect(() => {
+    const currentPdf = renderStateRef.current.currentPdf
     return () => {
-      // Cleanup on unmount or URL change
-      if (renderStateRef.current.currentPdf) {
-        renderStateRef.current.currentPdf.destroy()
+      if (currentPdf) {
+        currentPdf.destroy()
         renderStateRef.current.currentPdf = null
       }
     }
-  }, [pdfUrl, onTotalPages])
+  }, [])
 
   // Keep ref in sync with state
   useEffect(() => {
@@ -75,6 +78,7 @@ export function PdfViewer({ pdfUrl, onTotalPages }: PdfViewerProps) {
   }, [pdfDoc])
 
   // Render page function
+  // eslint-disable-next-line react-hooks/preserve-manual-memoization -- refs require manual memo pattern
   const renderPage = useCallback(async () => {
     const state = renderStateRef.current
     const canvas = canvasRef.current

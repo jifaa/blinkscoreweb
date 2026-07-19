@@ -182,6 +182,7 @@ export function PerformanceMode({ className: _className }: PerformanceModeProps)
                 size="icon"
                 onClick={exitPerformanceMode}
                 className="text-white hover:bg-white/20"
+                aria-label="Exit Stage Mode"
               >
                 <Minimize2 className="h-5 w-5" />
               </Button>
@@ -190,6 +191,7 @@ export function PerformanceMode({ className: _className }: PerformanceModeProps)
                 size="icon"
                 onClick={toggleFullscreen}
                 className="text-white hover:bg-white/20"
+                aria-label={isFullscreen ? "Exit Fullscreen" : "Enter Fullscreen"}
               >
                 {isFullscreen ? <Minimize2 className="h-5 w-5" /> : <Maximize2 className="h-5 w-5" />}
               </Button>

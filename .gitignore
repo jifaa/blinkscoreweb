@@ -24,6 +24,18 @@
 .DS_Store
 *.pem
 
+# Python (for browser-use / quality_check tooling)
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.pyc
+.pytest_cache/
+.mypy_cache/
+*.egg-info/
+dist/
+build/
+
 # debug
 npm-debug.log*
 yarn-debug.log*

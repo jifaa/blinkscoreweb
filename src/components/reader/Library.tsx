@@ -144,6 +144,7 @@ export function LibraryDialog({ open, onOpenChange, onSelectScore }: LibraryDial
                       variant="ghost"
                       className="text-destructive hover:text-destructive"
                       onClick={() => setDeleteConfirm(score.id)}
+                      aria-label={`Delete ${score.name}`}
                     >
                       <Trash2 className="w-4 h-4" />
                     </Button>
