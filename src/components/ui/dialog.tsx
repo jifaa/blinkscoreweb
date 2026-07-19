@@ -10,7 +10,7 @@ const DialogTrigger = DialogPrimitive.Trigger
 const DialogPortal = DialogPrimitive.Portal
 const DialogClose = DialogPrimitive.Close
 
-/* DialogOverlay: dark scrim per DESIGN.md semantic-overlay */
+/* DialogOverlay: dark scrim with Stitch backdrop */
 const DialogOverlay = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Overlay>,
   React.ComponentPropsWithoutRef<typeof DialogPrimitive.Overlay>
@@ -18,7 +18,7 @@ const DialogOverlay = React.forwardRef<
   <DialogPrimitive.Overlay
     ref={ref}
     className={cn(
-      "fixed inset-0 z-50 bg-black/80 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
+      "fixed inset-0 z-50 bg-black/80 backdrop-blur-sm data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
       className
     )}
     {...props}
@@ -26,7 +26,7 @@ const DialogOverlay = React.forwardRef<
 ))
 DialogOverlay.displayName = DialogPrimitive.Overlay.displayName
 
-/* DialogContent: surface-1 with hairline border per Linear card style */
+/* DialogContent: Stitch surface with emerald accent */
 const DialogContent = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Content>,
   React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content>
@@ -37,7 +37,7 @@ const DialogContent = React.forwardRef<
       ref={ref}
       className={cn(
         "fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4",
-        "bg-surface-1 border border-hairline rounded-lg p-6 shadow-lg",
+        "bg-[bg-card-foreground] border border-[bg-border] rounded-lg p-6",
         "duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out",
         "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
         "data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95",
@@ -49,12 +49,11 @@ const DialogContent = React.forwardRef<
     >
       {children}
       <DialogPrimitive.Close className={cn(
-        "absolute right-4 top-4 rounded-sm opacity-70 transition-opacity",
-        "hover:opacity-100",
-        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-focus",
+        "absolute right-4 top-4 rounded-sm opacity-70 transition-all hover:opacity-100 hover:bg-muted",
+        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[bg-primary]",
         "disabled:pointer-events-none"
       )}>
-        <X className="h-4 w-4 text-ink-subtle" />
+        <X className="h-4 w-4 text-[text-muted-foreground]" />
         <span className="sr-only">Close</span>
       </DialogPrimitive.Close>
     </DialogPrimitive.Content>
@@ -75,27 +74,27 @@ const DialogFooter = ({ className, ...props }: React.HTMLAttributes<HTMLDivEleme
 )
 DialogFooter.displayName = "DialogFooter"
 
-/* DialogTitle: uses card-title typography */
+/* DialogTitle: Stitch style */
 const DialogTitle = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Title>,
   React.ComponentPropsWithoutRef<typeof DialogPrimitive.Title>
 >(({ className, ...props }, ref) => (
   <DialogPrimitive.Title
     ref={ref}
-    className={cn("text-card-title font-semibold text-ink leading-none tracking-tight", className)}
+    className={cn("text-base font-semibold text-[text-foreground] leading-none tracking-tight", className)}
     {...props}
   />
 ))
 DialogTitle.displayName = DialogPrimitive.Title.displayName
 
-/* DialogDescription: muted text for secondary info */
+/* DialogDescription: Stitch muted text */
 const DialogDescription = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Description>,
   React.ComponentPropsWithoutRef<typeof DialogPrimitive.Description>
 >(({ className, ...props }, ref) => (
   <DialogPrimitive.Description
     ref={ref}
-    className={cn("text-sm text-ink-subtle", className)}
+    className={cn("text-sm text-[text-muted-foreground]", className)}
     {...props}
   />
 ))

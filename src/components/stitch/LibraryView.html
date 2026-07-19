@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BlinkScore - My Scores</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/geist@1.3.0/dist/fonts/geist.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-high": "#2a2a2c",
+                    "on-tertiary-fixed-variant": "#842225",
+                    "on-surface-variant": "#bbcabf",
+                    "secondary-fixed-dim": "#adc6ff",
+                    "on-tertiary-container": "#711419",
+                    "surface-bright": "#39393b",
+                    "outline-variant": "#3c4a42",
+                    "surface-container-lowest": "#0e0e10",
+                    "tertiary": "#ffb3af",
+                    "primary-fixed-dim": "#4edea3",
+                    "error": "#ffb4ab",
+                    "on-surface": "#e5e1e4",
+                    "primary-fixed": "#6ffbbe",
+                    "tertiary-container": "#fc7c78",
+                    "inverse-on-surface": "#313032",
+                    "primary-container": "#10b981",
+                    "inverse-primary": "#006c49",
+                    "on-secondary-fixed": "#001a42",
+                    "surface-container-highest": "#353437",
+                    "on-primary": "#003824",
+                    "on-secondary-container": "#e6ecff",
+                    "on-background": "#e5e1e4",
+                    "on-primary-fixed-variant": "#005236",
+                    "on-secondary-fixed-variant": "#004395",
+                    "surface-tint": "#4edea3",
+                    "secondary-fixed": "#d8e2ff",
+                    "error-container": "#93000a",
+                    "secondary": "#adc6ff",
+                    "on-secondary": "#002e6a",
+                    "tertiary-fixed": "#ffdad7",
+                    "on-tertiary-fixed": "#410005",
+                    "on-primary-fixed": "#002113",
+                    "inverse-surface": "#e5e1e4",
+                    "on-error": "#690005",
+                    "secondary-container": "#0566d9",
+                    "tertiary-fixed-dim": "#ffb3af",
+                    "surface-container": "#201f22",
+                    "on-error-container": "#ffdad6",
+                    "on-primary-container": "#00422b",
+                    "background": "#131315",
+                    "surface-variant": "#353437",
+                    "surface": "#131315",
+                    "on-tertiary": "#650911",
+                    "surface-container-low": "#1c1b1d",
+                    "surface-dim": "#131315",
+                    "primary": "#4edea3",
+                    "outline": "#86948a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "base": "4px",
+                    "margin-mobile": "1rem",
+                    "xl": "4rem",
+                    "sm": "1rem",
+                    "margin-desktop": "2.5rem",
+                    "gutter": "1rem",
+                    "md": "1.5rem",
+                    "lg": "2.5rem",
+                    "xs": "0.5rem"
+            },
+            "fontFamily": {
+                    "headline-md": ["Geist"],
+                    "display": ["Geist"],
+                    "label-sm": ["Geist"],
+                    "label-md": ["Geist"],
+                    "headline-lg": ["Geist"],
+                    "body-md": ["Geist"],
+                    "body-lg": ["Geist"],
+                    "headline-lg-mobile": ["Geist"]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                    "display": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                    "label-sm": ["12px", { "lineHeight": "1.4", "fontWeight": "500" }],
+                    "label-md": ["14px", { "lineHeight": "1.4", "letterSpacing": "0.02em", "fontWeight": "500" }],
+                    "headline-lg": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                    "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                    "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                    "headline-lg-mobile": ["28px", { "lineHeight": "1.2", "fontWeight": "600" }]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            font-family: 'Geist', sans-serif;
+            background-color: #131315;
+            color: #e5e1e4;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom scrollbar for dark theme */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #131315; }
+        ::-webkit-scrollbar-thumb { background: #353437; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #4edea3; }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 right-0 z-50 bg-surface border-b border-outline-variant flex justify-between items-center w-full px-margin-desktop py-4">
+<div class="flex items-center gap-md">
+<span class="font-headline-lg text-headline-lg font-bold text-primary">BlinkScore</span>
+</div>
+<div class="flex-1 max-w-xl mx-lg hidden md:block">
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full bg-surface-container-high border-none rounded-lg py-2 pl-10 pr-4 text-body-md focus:ring-1 focus:ring-primary transition-all" placeholder="Search your library..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-sm">
+<button class="bg-primary-container text-on-primary-container px-md py-2 rounded-lg font-label-md hover:brightness-110 active:scale-95 transition-all flex items-center gap-xs">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">upload_file</span>
+                Upload PDF
+            </button>
+<div class="flex items-center gap-xs ml-4">
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-high rounded-full transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-high rounded-full transition-colors">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</div>
+</header>
+<div class="flex flex-1 pt-20">
+<!-- SideNavBar -->
+<aside class="fixed left-0 h-[calc(100vh-80px)] w-64 bg-surface-container border-r border-outline-variant flex flex-col py-lg px-md hidden md:flex">
+<nav class="flex-1 space-y-2">
+<!-- My Scores (Active) -->
+<a class="flex items-center gap-md p-3 text-primary border-r-2 border-primary bg-surface-container-highest transition-all group font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">library_music</span>
+                    My Scores
+                </a>
+<a class="flex items-center gap-md p-3 text-on-surface-variant hover:bg-surface-container-highest transition-all group font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">history</span>
+                    Recent
+                </a>
+<a class="flex items-center gap-md p-3 text-on-surface-variant hover:bg-surface-container-highest transition-all group font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">list_alt</span>
+                    Setlists
+                </a>
+<a class="flex items-center gap-md p-3 text-on-surface-variant hover:bg-surface-container-highest transition-all group font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">play_circle</span>
+                    Perform
+                </a>
+</nav>
+<div class="pt-lg border-t border-outline-variant space-y-2">
+<button class="w-full bg-primary/10 text-primary border border-primary/20 p-3 rounded-lg flex items-center justify-center gap-sm font-label-md hover:bg-primary/20 transition-all">
+<span class="material-symbols-outlined text-[20px]">bolt</span>
+                    Go Stage Mode
+                </button>
+<a class="flex items-center gap-md p-3 text-on-surface-variant hover:bg-surface-container-highest transition-all font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">help</span>
+                    Support
+                </a>
+<a class="flex items-center gap-md p-3 text-on-surface-variant hover:bg-surface-container-highest transition-all font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">logout</span>
+                    Sign Out
+                </a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 md:ml-64 p-margin-desktop bg-background overflow-y-auto">
+<div class="max-w-7xl mx-auto">
+<!-- Page Header -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-lg gap-md">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface mb-xs">My Scores</h1>
+<p class="text-on-surface-variant font-body-md">Manage your professional sheet music library.</p>
+</div>
+<div class="flex items-center gap-sm">
+<div class="flex bg-surface-container border border-outline-variant rounded-lg p-1">
+<button class="p-2 bg-surface-container-highest text-primary rounded-md">
+<span class="material-symbols-outlined">grid_view</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-on-surface">
+<span class="material-symbols-outlined">list</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Scores Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-lg mb-xl">
+<!-- Card 1 -->
+<div class="group cursor-pointer">
+<div class="relative aspect-[3/4] bg-surface-container border border-outline-variant rounded-lg overflow-hidden transition-all group-hover:border-primary">
+<div class="absolute inset-0 bg-cover bg-center transition-transform group-hover:scale-105" data-alt="A clean, high-resolution scan of sheet music for Chopin's Nocturne Op. 9 No. 2, showing elegant black musical notation on a slightly aged cream paper background. The lighting is soft and uniform, emphasizing the professional minimalist aesthetic of a high-end digital score reader. The environment is a dark, focused workspace with deep shadows and emerald accents." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCkO2tDrkWTD9es26yoXr4wmu-p9x5FDAWCj4EhoaVjAxqW_gR1i197y23L_P2akJpRvoH5_aNeT5av9NoyrcNazvULQlpCAiqAxWcC-h7U4BVO9RUy0HC9qYs_XhReE-CCzq-MwhJTcDBUUfoK7UJDdnF5PEg7vry2vxX_8hXtqNhMxFv-MEHb98UOshoPhTuvfa1VsWaWIH-h8pRZF9bQRklUBdxufooobNbJgNG5cUWMJeuuhm9FiiD6o3XWASo7OER8rYe4aFYm')">
+</div>
+<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<span class="bg-primary text-on-primary w-12 h-12 rounded-full flex items-center justify-center shadow-lg active:scale-90 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</span>
+</div>
+</div>
+<div class="mt-md">
+<h3 class="font-headline-md text-body-lg text-on-surface truncate">Chopin Nocturne Op.9 No.2</h3>
+<p class="text-on-surface-variant font-label-md">Frédéric Chopin</p>
+<div class="flex items-center justify-between mt-xs text-on-surface-variant/70 font-label-sm">
+<span>12 pages</span>
+<span>2 days ago</span>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="group cursor-pointer">
+<div class="relative aspect-[3/4] bg-surface-container border border-outline-variant rounded-lg overflow-hidden transition-all group-hover:border-primary">
+<div class="absolute inset-0 bg-cover bg-center transition-transform group-hover:scale-105" data-alt="Detailed close-up of Moonlight Sonata piano sheet music, featuring dense staff lines and complex chords. The paper has a modern digital crispness, presented on a dark slate background typical of professional music performance software. The overall mood is serious, tech-forward, and utilitarian, with subtle performance emerald highlights on the interface surrounding it." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCTs4fS0vtaJrc48aGVktCKIiemEnvrPi7rEUXiE_XcCe8CuKurTRUX8GqUrdO040gvq6TiQ3MPGmI4UfbPwkh4MgjpDZTjxDiuDdx1RPZjSebjmVpoecicZAyvESAOZmZaoIPNHseizj2QbEZKwdPA7JZI1eDJcK2Ycm7V3aI-9Xwe_-pM3EniPMpScFRLuu9ZOK4Gjb45nC3KIQnvUyTcn88bCOPPXpPjYQldtPAa3ns2kRpuIYixalIVyOQ3Ju9rk1An7gN2r_7b')">
+</div>
+<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<span class="bg-primary text-on-primary w-12 h-12 rounded-full flex items-center justify-center shadow-lg active:scale-90 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</span>
+</div>
+</div>
+<div class="mt-md">
+<h3 class="font-headline-md text-body-lg text-on-surface truncate">Moonlight Sonata</h3>
+<p class="text-on-surface-variant font-label-md">Ludwig van Beethoven</p>
+<div class="flex items-center justify-between mt-xs text-on-surface-variant/70 font-label-sm">
+<span>8 pages</span>
+<span>1 week ago</span>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="group cursor-pointer">
+<div class="relative aspect-[3/4] bg-surface-container border border-outline-variant rounded-lg overflow-hidden transition-all group-hover:border-primary">
+<div class="absolute inset-0 bg-cover bg-center transition-transform group-hover:scale-105" data-alt="Digital scan of Claire de Lune sheet music, showing impressionist musical notation with many flowing eighth notes. The image is clean and minimalist, set against a dark, low-glare background designed for dim stage environments. The lighting is cool and professional, focusing on clarity and ease of reading for a performer." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB-FfmYM5UXz-LKaHNpSwixcOxX4NFr0r3KlFHosYbHM4dSCoB4U31jwny1Ip-Z8rRiZ7PQw0iMbXxO3A1F1TflW5LuFwPZGNOFUG2jggJ_05Opegk5uJbryQF7BQIpF4VbXjU6wDD7NuVvl3cxTbKb-6J_xWjAbetFMi-oP8mVYR6cJu3PYpe8LE0T-NI82_Q5JieGa3a0Twst0bfpWiPYG5w8mPC7JYUnhZd72D51PP0z7JfmxGgyIldHoiJMCKUDuz0AAvBBgz2J')">
+</div>
+<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<span class="bg-primary text-on-primary w-12 h-12 rounded-full flex items-center justify-center shadow-lg active:scale-90 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</span>
+</div>
+</div>
+<div class="mt-md">
+<h3 class="font-headline-md text-body-lg text-on-surface truncate">Claire de Lune</h3>
+<p class="text-on-surface-variant font-label-md">Claude Debussy</p>
+<div class="flex items-center justify-between mt-xs text-on-surface-variant/70 font-label-sm">
+<span>6 pages</span>
+<span>3 hours ago</span>
+</div>
+</div>
+</div>
+<!-- Card 4 (Add New) -->
+<div class="group cursor-pointer border-2 border-dashed border-outline-variant rounded-lg flex flex-col items-center justify-center aspect-[3/4] hover:border-primary hover:bg-surface-container transition-all">
+<div class="w-16 h-16 rounded-full bg-surface-container-high flex items-center justify-center group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary text-[32px]">add</span>
+</div>
+<span class="mt-md font-label-md text-on-surface-variant group-hover:text-primary">Add New Score</span>
+</div>
+</div>
+<!-- Empty State Section -->
+<section class="border-t border-outline-variant py-xl flex flex-col items-center text-center">
+<div class="w-48 h-48 mb-lg opacity-40">
+<!-- Custom SVG Illustration via data-alt logic -->
+<div class="w-full h-full bg-surface-container rounded-full flex items-center justify-center border border-outline-variant" data-alt="A minimalist architectural illustration of a futuristic music stand, featuring clean lines and a digital interface. The style is wireframe and technical, utilizing a monochromatic palette of deep charcoal and glowing emerald lines. The composition is centered in a vast dark void, representing a clean canvas for a musician's library." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDikbgzRI8-3dhDTqWCntH-V3b52dLOTO-zD8rtZFYkbPh7yd0eoagqWqk-HTdR4s7pebKOGPNeLi3r8A-C-Q31XGrLE7Zf2jcmqyJJh87UNnY3Vc0cKPjqG8ZJb9_RxE16AUVpSYVzdIEig7Fx-0_rAVrPN29_qYTOKlWUyquwJqwH3jfO15FUXwYzgor9eyWlpv57eIjhgbdKOT3drkZFhGlEDvnnr5BRFs5MzFL11nxFTwwW2dTOoxVRwGKl3lqpqyAfGLiCu8dg')">
+</div>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface mb-xs">Library Growth</h2>
+<p class="text-on-surface-variant font-body-md max-w-md mx-auto mb-lg">
+                        Ready to expand your repertoire? Your digital sheet music will be processed and optimized for BlinkScore performance mode automatically.
+                    </p>
+<button class="bg-transparent border border-primary text-primary px-lg py-3 rounded-lg font-label-md hover:bg-primary/5 active:scale-95 transition-all flex items-center gap-sm">
+<span class="material-symbols-outlined">library_add</span>
+                        Upload your first score
+                    </button>
+</section>
+</div>
+</main>
+</div>
+<!-- Mobile Bottom NavBar (Hidden on Desktop) -->
+<nav class="md:hidden fixed bottom-0 left-0 right-0 bg-surface-container border-t border-outline-variant flex justify-around items-center py-2 px-margin-mobile z-50">
+<button class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">library_music</span>
+<span class="text-xs font-label-sm">Scores</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">history</span>
+<span class="text-xs font-label-sm">Recent</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">list_alt</span>
+<span class="text-xs font-label-sm">Sets</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">account_circle</span>
+<span class="text-xs font-label-sm">Profile</span>
+</button>
+</nav>
+<!-- Page Transition Effect Overlay -->
+<div class="fixed inset-0 bg-background z-[100] pointer-events-none opacity-0 transition-opacity duration-300" id="transition-overlay"></div>
+<script>
+        // Micro-interactions for score cards
+        document.querySelectorAll('.group').forEach(card => {
+            card.addEventListener('mousedown', () => {
+                card.style.transform = 'scale(0.98)';
+            });
+            card.addEventListener('mouseup', () => {
+                card.style.transform = 'scale(1)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'scale(1)';
+            });
+        });
+
+        // Search bar focus effect
+        const searchInput = document.querySelector('input[type="text"]');
+        searchInput.addEventListener('focus', () => {
+            searchInput.parentElement.classList.add('scale-[1.02]');
+        });
+        searchInput.addEventListener('blur', () => {
+            searchInput.parentElement.classList.remove('scale-[1.02]');
+        });
+
+        // Handle active state visuals
+        window.addEventListener('load', () => {
+            const overlay = document.getElementById('transition-overlay');
+            overlay.style.opacity = '0';
+        });
+    </script>
+</body></html>

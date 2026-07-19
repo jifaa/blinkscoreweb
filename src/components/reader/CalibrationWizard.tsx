@@ -166,33 +166,62 @@ export function CalibrationWizard({ open, onOpenChange, onComplete }: Calibratio
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-md">
+      {/* Stitch Surface Dialog */}
+      <DialogContent className="sm:max-w-md bg-card-foreground border border-border rounded-lg">
         <DialogHeader>
-          <DialogTitle className="flex items-center gap-2">
-            <Eye className="w-5 h-5" />
+          <DialogTitle className="flex items-center gap-2 text-foreground">
+            <Eye className="w-5 h-5 text-primary" />
             Eye Wink Calibration
           </DialogTitle>
-          <DialogDescription>{getStepInstruction()}</DialogDescription>
+          <DialogDescription className="text-muted-foreground">
+            {getStepInstruction()}
+          </DialogDescription>
         </DialogHeader>
+
+        {/* Progress stepper - Stitch Style */}
+        <div className="flex items-center justify-center gap-2 py-2">
+          {["intro", "neutral", "rightWink", "leftWink", "complete"].map((s, i) => (
+            <div key={s} className="flex items-center">
+              <div
+                className={`w-2.5 h-2.5 rounded-full transition-colors ${
+                  step === s
+                    ? "bg-primary"
+                    : ["intro", "neutral", "rightWink", "leftWink", "complete"].indexOf(step) > i
+                    ? "bg-primary-hover"
+                    : "bg-[#27272a]"
+                }`}
+              />
+              {i < 4 && (
+                <div className={`w-6 h-0.5 ${
+                  ["intro", "neutral", "rightWink", "leftWink", "complete"].indexOf(step) > i
+                    ? "bg-primary-hover"
+                    : "bg-[#27272a]"
+                }`} />
+              )}
+            </div>
+          ))}
+        </div>
 
         {/* Progress bar */}
         {step !== "intro" && step !== "complete" && (
           <div className="py-4">
-            <Progress value={progress} className="h-2" />
-            <p className="text-xs text-muted-foreground text-center mt-2">
+            <Progress value={progress} className="h-1.5 bg-[#27272a] [&>div]:bg-primary" />
+            <p className="text-xs text-muted-foreground text-center mt-2 font-mono">
               {progress < 100
                 ? `Hold for ${Math.ceil((100 - progress) / 10) / 10}s...`
-                : "Sample collected!"}
+                : "✓ Sample collected!"}
             </p>
           </div>
         )}
 
-        {/* Visual feedback for current step */}
-        <div className="flex justify-center py-4">
+        {/* Visual feedback for current step - Stitch Style */}
+        <div className="flex justify-center py-6">
           {step === "complete" ? (
-            <div className="flex flex-col items-center gap-2 text-green-500">
-              <CheckCircle className="w-16 h-16" />
-              <span className="font-medium">Calibration Successful</span>
+            <div className="flex flex-col items-center gap-3">
+              <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center animate-glow">
+                <CheckCircle className="w-10 h-10 text-primary" />
+              </div>
+              <span className="font-semibold text-primary">Calibration Successful</span>
             </div>
           ) : step === "neutral" ? (
             <div className="flex items-center gap-4">
@@ -212,28 +241,45 @@ export function CalibrationWizard({ open, onOpenChange, onComplete }: Calibratio
           ) : null}
         </div>
 
-        {/* Current thresholds preview */}
+        {/* Current thresholds preview - JetBrains Mono */}
         {step !== "intro" && (
-          <div className="text-xs text-muted-foreground text-center">
+          <div className="text-xs text-muted-foreground text-center font-mono bg-[#0c0e12] rounded p-2">
             Samples: Neutral {samples.neutralSamples.length} | Right {samples.rightWinkSamples.length} | Left{" "}
             {samples.leftWinkSamples.length}
           </div>
         )}
 
-        <DialogFooter>
+        <DialogFooter className="gap-2">
           {step === "intro" ? (
             <>
-              <Button variant="secondary" onClick={() => onOpenChange(false)}>
+              <Button
+                variant="secondary"
+                className="border-border bg-secondary hover:bg-muted"
+                onClick={() => onOpenChange(false)}
+              >
                 Cancel
               </Button>
-              <Button onClick={handleStartCalibration}>Start Calibration</Button>
+              <Button
+                className="bg-primary hover:bg-primary-hover text-primary-foreground font-semibold"
+                onClick={handleStartCalibration}
+              >
+                Start Calibration
+              </Button>
             </>
           ) : (
             <>
-              <Button variant="secondary" onClick={() => onOpenChange(false)}>
+              <Button
+                variant="secondary"
+                className="border-border bg-secondary hover:bg-muted"
+                onClick={() => onOpenChange(false)}
+              >
                 Cancel
               </Button>
-              <Button onClick={handleNextStep} disabled={!canProceed()}>
+              <Button
+                className="bg-primary hover:bg-primary-hover text-primary-foreground font-semibold disabled:opacity-50"
+                onClick={handleNextStep}
+                disabled={!canProceed()}
+              >
                 {step === "complete" ? "Done" : "Next"}
                 <ChevronRight className="w-4 h-4 ml-1" />
               </Button>

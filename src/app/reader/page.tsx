@@ -104,7 +104,7 @@ export default function ReaderPage() {
   const showPermissionDialog = cameraPermission === "pending" && cameraSupported
 
   return (
-    <div className="min-h-screen bg-canvas flex flex-col">
+    <div className="min-h-screen bg-background flex flex-col">
       {/* Permission Dialog */}
       <CameraPermissionDialog
         open={showPermissionDialog}
@@ -152,12 +152,13 @@ export default function ReaderPage() {
       {/* Main Content */}
       {pdfUrl ? (
         <>
-          {/* Header with controls */}
-          <header className="h-14 flex items-center justify-between px-4 border-b border-hairline bg-surface-1">
+          {/* Header - Stitch Performance Style */}
+          <header className="h-14 flex items-center justify-between px-6 border-b border-border bg-background">
             <div className="flex items-center gap-4">
               <Button
                 variant="ghost"
                 size="sm"
+                className="text-foreground hover:text-[#10b981]"
                 onClick={() => {
                   setPdf(null, null, 0)
                   setCurrentPage(1)
@@ -165,7 +166,7 @@ export default function ReaderPage() {
               >
                 ← Back
               </Button>
-              <span className="font-medium text-sm truncate max-w-[200px]">
+              <span className="font-medium text-sm text-muted-foreground truncate max-w-[200px] font-mono">
                 {pdfFileName || "Untitled"}
               </span>
             </div>
@@ -177,6 +178,7 @@ export default function ReaderPage() {
                 <Button
                   variant="ghost"
                   size="icon"
+                  className="text-muted-foreground hover:text-[#10b981]"
                   onClick={() => setShowLibrary(true)}
                   title="Open from Library"
                 >
@@ -185,6 +187,7 @@ export default function ReaderPage() {
                 <Button
                   variant="ghost"
                   size="icon"
+                  className="text-muted-foreground hover:text-[#10b981]"
                   onClick={() => setShowSettings(true)}
                   title="Settings"
                 >
@@ -195,24 +198,28 @@ export default function ReaderPage() {
           </header>
 
           {/* PDF Viewer */}
-          <main className="flex-1 flex flex-col overflow-hidden">
+          <main className="flex-1 flex flex-col overflow-hidden relative">
             <PdfViewer pdfUrl={pdfUrl} onTotalPages={handleTotalPages} />
 
-            {/* Camera Preview (small overlay) */}
+            {/* Camera Preview - Stitch Style */}
             {cameraPermission === "granted" && (
-              <div className="absolute bottom-20 right-4 w-48 h-36 rounded-lg overflow-hidden shadow-lg border border-hairline">
+              <div className="absolute bottom-20 right-4 w-52 h-40 rounded-[8px] overflow-hidden border border-border bg-secondary">
                 <CameraPreview onBlinkScores={handleBlinkScores} />
+                {/* Tracking Status */}
+                <div className="absolute top-2 right-2 flex items-center gap-2 px-2 py-1 bg-black/60 rounded text-xs">
+                  <span className="w-2 h-2 bg-[#10b981] rounded-full animate-tracking-pulse"></span>
+                  <span className="text-foreground font-mono text-xs">Tracking</span>
+                </div>
               </div>
             )}
           </main>
 
-          {/* Page Thumbnails */}
-          <footer className="border-t border-hairline bg-surface-1">
+          {/* Page Thumbnails - Stitch Surface */}
+          <footer className="border-t border-border bg-card">
             {totalPages > 0 && (
               <div className="h-24 overflow-hidden">
-                {/* Page thumbnails would go here */}
-                <div className="p-2 text-center text-xs text-muted-foreground">
-                  {currentPage} of {totalPages}
+                <div className="p-2 text-center text-xs text-muted-foreground font-mono">
+                  Page {currentPage} of {totalPages}
                 </div>
               </div>
             )}
@@ -222,14 +229,14 @@ export default function ReaderPage() {
           <PerformanceMode />
         </>
       ) : (
-        /* Upload State */
-        <main className="flex-1 flex flex-col items-center justify-center p-8">
+        /* Upload State - Stitch Style */
+        <main className="flex-1 flex flex-col items-center justify-center p-8 bg-background">
           <div className="w-full max-w-2xl space-y-8">
             <div className="text-center space-y-4">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/10 rounded-full">
-                <Eye className="w-8 h-8 text-primary" />
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-[#10b981]/10 rounded-[8px]">
+                <Eye className="w-8 h-8 text-[#10b981]" />
               </div>
-              <h1 className="text-2xl font-semibold">Welcome to BlinkScore</h1>
+              <h1 className="text-2xl font-semibold text-foreground">Welcome to BlinkScore</h1>
               <p className="text-muted-foreground">
                 Upload a PDF to get started with hands-free page turning
               </p>
@@ -238,14 +245,21 @@ export default function ReaderPage() {
             <PdfUpload onFileSelect={handleFileSelect} className="min-h-[300px]" />
 
             <div className="text-center">
-              <Button variant="secondary" onClick={() => setShowLibrary(true)}>
+              <Button
+                variant="secondary"
+                className="border-border bg-secondary hover:bg-[#282a2e]"
+                onClick={() => setShowLibrary(true)}
+              >
                 Open from Library
               </Button>
             </div>
 
-            {/* Privacy note */}
+            {/* Privacy note - Stitch Style */}
             <div className="text-center text-sm text-muted-foreground">
-              <p>🔒 All processing happens locally in your browser.</p>
+              <p className="flex items-center justify-center gap-2">
+                <span className="w-2 h-2 bg-[#10b981] rounded-full"></span>
+                All processing happens locally in your browser.
+              </p>
               <p>No video or data is ever uploaded.</p>
             </div>
           </div>

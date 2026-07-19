@@ -6,7 +6,7 @@ import { cn } from "../../lib/utils"
 
 const Tabs = TabsPrimitive.Root
 
-/* TabsList based on Linear's pill-style tabs */
+/* TabsList based on Stitch's segmented control style */
 const TabsList = React.forwardRef<
   React.ElementRef<typeof TabsPrimitive.List>,
   React.ComponentPropsWithoutRef<typeof TabsPrimitive.List>
@@ -14,7 +14,7 @@ const TabsList = React.forwardRef<
   <TabsPrimitive.List
     ref={ref}
     className={cn(
-      "inline-flex h-9 items-center rounded-pill bg-canvas p-1 text-ink-subtle",
+      "inline-flex h-10 items-center gap-1 rounded-sm bg-[bg-secondary] border border-[bg-border] p-1",
       className
     )}
     {...props}
@@ -22,7 +22,7 @@ const TabsList = React.forwardRef<
 ))
 TabsList.displayName = TabsPrimitive.List.displayName
 
-/* TabsTrigger with pill-style selection per DESIGN.md pricing-tab-* */
+/* TabsTrigger with Stitch active state */
 const TabsTrigger = React.forwardRef<
   React.ElementRef<typeof TabsPrimitive.Trigger>,
   React.ComponentPropsWithoutRef<typeof TabsPrimitive.Trigger>
@@ -30,10 +30,11 @@ const TabsTrigger = React.forwardRef<
   <TabsPrimitive.Trigger
     ref={ref}
     className={cn(
-      "inline-flex items-center justify-center whitespace-nowrap rounded-pill px-4 py-1.5 text-sm font-medium",
-      "text-ink-subtle transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-focus",
+      "inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium",
+      "text-[text-muted-foreground] transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[bg-primary]",
       "disabled:pointer-events-none disabled:opacity-50",
-      "data-[state=active]:bg-surface-2 data-[state=active]:text-ink",
+      "data-[state=active]:bg-[bg-primary] data-[state=active]:text-[text-primary-foreground] data-[state=active]:font-semibold",
+      "hover:text-[text-foreground]",
       className
     )}
     {...props}
@@ -48,7 +49,7 @@ const TabsContent = React.forwardRef<
   <TabsPrimitive.Content
     ref={ref}
     className={cn(
-      "mt-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-focus focus-visible:ring-offset-2",
+      "mt-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[bg-primary] focus-visible:ring-offset-2 focus-visible:ring-offset-[bg-card-foreground]",
       className
     )}
     {...props}

@@ -1,7 +1,7 @@
 import * as React from "react"
 import { cn } from "../../lib/utils"
 
-/* Label with Linear-style typography */
+/* Label with Stitch typography */
 const Label = React.forwardRef<
   HTMLLabelElement,
   React.LabelHTMLAttributes<HTMLLabelElement>
@@ -9,7 +9,7 @@ const Label = React.forwardRef<
   <label
     ref={ref}
     className={cn(
-      "text-sm font-medium text-ink leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-50",
+      "text-sm font-medium text-[text-foreground] leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-50",
       className
     )}
     {...props}

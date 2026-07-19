@@ -2,7 +2,7 @@ import * as React from "react"
 import * as SliderPrimitive from "@radix-ui/react-slider"
 import { cn } from "../../lib/utils"
 
-/* Slider with Linear-style dark track and primary accent */
+/* Slider with Stitch Performance Emerald design */
 const Slider = React.forwardRef<
   React.ElementRef<typeof SliderPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof SliderPrimitive.Root>
@@ -16,16 +16,15 @@ const Slider = React.forwardRef<
     {...props}
   >
     {/* Track: subtle background */}
-    <SliderPrimitive.Track className="relative h-1.5 w-full grow overflow-hidden rounded-full bg-surface-2">
-      {/* Range: primary accent */}
-      <SliderPrimitive.Range className="absolute h-full bg-primary" />
+    <SliderPrimitive.Track className="relative h-1.5 w-full grow overflow-hidden rounded-full bg-[bg-border]">
+      {/* Range: Performance Emerald */}
+      <SliderPrimitive.Range className="absolute h-full bg-[bg-primary]" />
     </SliderPrimitive.Track>
-    {/* Thumb: surface-1 with hairline border */}
+    {/* Thumb: Stitch style with emerald focus */}
     <SliderPrimitive.Thumb className={cn(
-      "block h-4 w-4 rounded-full border border-hairline bg-surface-1",
-      "shadow-sm transition-colors",
-      "hover:border-hairline-strong",
-      "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-focus focus-visible:ring-offset-2 focus-visible:ring-offset-canvas",
+      "block h-4 w-4 rounded-full border border-[bg-muted] bg-[bg-secondary]",
+      "transition-all hover:border-[bg-primary] hover:shadow-[0_0_8px_rgba(16,185,129,0.3)]",
+      "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[bg-primary] focus-visible:ring-offset-2 focus-visible:ring-offset-[bg-background]",
       "disabled:pointer-events-none disabled:opacity-50"
     )} />
   </SliderPrimitive.Root>

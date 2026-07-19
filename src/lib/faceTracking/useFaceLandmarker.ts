@@ -71,7 +71,6 @@ export function useFaceLandmarker({
   useEffect(() => {
     const initLandmarker = async () => {
       try {
-        // Pin to exact version to prevent unexpected behavior changes from CDN updates
         const vision = await FilesetResolver.forVisionTasks(
           "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.17/wasm"
         )
@@ -85,11 +84,29 @@ export function useFaceLandmarker({
           numFaces: 1,
         })
         landmarkerRef.current = landmarker
-        setIsLoading(false)
-      } catch (err) {
-        console.error("Failed to initialize face landmarker:", err)
-        setError("Failed to initialize face detection. Please refresh the page.")
-        setIsSupported(false)
+      } catch (gpuErr) {
+        // GPU delegate failed - try CPU fallback
+        console.warn("GPU delegate failed, falling back to CPU:", gpuErr)
+        try {
+          const vision = await FilesetResolver.forVisionTasks(
+            "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.17/wasm"
+          )
+          const landmarker = await FaceLandmarker.createFromOptions(vision, {
+            baseOptions: {
+              modelAssetPath: "https://storage.googleapis.com/mediapipe-models/face_landmarker/face_landmarker/float16/1/face_landmarker.task",
+              delegate: "CPU",
+            },
+            outputFaceBlendshapes: true,
+            runningMode: "VIDEO",
+            numFaces: 1,
+          })
+          landmarkerRef.current = landmarker
+        } catch (cpuErr) {
+          console.error("CPU fallback also failed:", cpuErr)
+          setError("Failed to initialize face detection. Please refresh the page.")
+          setIsSupported(false)
+        }
+      } finally {
         setIsLoading(false)
       }
     }
@@ -202,7 +219,24 @@ export function useFaceLandmarker({
   // Process frame - defined as a plain function to allow self-reference
   const processFrame = useCallback(
     (timestamp: number) => {
-      if (!landmarkerRef.current || !videoRef.current) return
+      if (!landmarkerRef.current || !videoRef.current) {
+        animationFrameRef.current = requestAnimationFrame(processFrameRef.current!)
+        return
+      }
+
+      const video = videoRef.current
+
+      // Skip if video is not in a valid state for detection
+      if (video.ended || video.paused || video.readyState < 2) {
+        animationFrameRef.current = requestAnimationFrame(processFrameRef.current!)
+        return
+      }
+
+      // Skip if video has no valid dimensions
+      if (video.videoWidth === 0 || video.videoHeight === 0) {
+        animationFrameRef.current = requestAnimationFrame(processFrameRef.current!)
+        return
+      }
 
       const { throttledFps: fps } = callbacksRef.current
       const frameInterval = 1000 / fps
@@ -211,12 +245,6 @@ export function useFaceLandmarker({
         return
       }
       lastFrameTimeRef.current = timestamp
-
-      const video = videoRef.current
-      if (video.readyState < 2) {
-        animationFrameRef.current = requestAnimationFrame(processFrameRef.current!)
-        return
-      }
 
       try {
         const result: FaceLandmarkerResult = landmarkerRef.current.detectForVideo(video, timestamp)
@@ -283,11 +311,46 @@ export function useFaceLandmarker({
 
       if (videoRef.current) {
         videoRef.current.srcObject = stream
-        await videoRef.current.play()
+
+        // Wait for video to be ready before playing
+        await new Promise<void>((resolve, reject) => {
+          if (!videoRef.current) {
+            reject(new Error("Video element not available"))
+            return
+          }
+
+          const video = videoRef.current
+
+          const onLoadedMetadata = () => {
+            video.removeEventListener("loadedmetadata", onLoadedMetadata)
+            video.removeEventListener("error", onError)
+            resolve()
+          }
+
+          const onError = () => {
+            video.removeEventListener("loadedmetadata", onLoadedMetadata)
+            video.removeEventListener("error", onError)
+            reject(new Error("Video failed to load"))
+          }
+
+          video.addEventListener("loadedmetadata", onLoadedMetadata)
+          video.addEventListener("error", onError)
+
+          // If already loaded, resolve immediately
+          if (video.readyState >= 1) {
+            onLoadedMetadata()
+          }
+        })
+
+        await videoRef.current.play().catch((err) => {
+          // Play might fail due to autoplay policies, continue anyway
+          console.warn("Video play() failed (autoplay may be blocked):", err)
+        })
       }
 
-      // Start processing loop
+      // Start processing loop only after video is ready
       if (processFrameRef.current) {
+        lastFrameTimeRef.current = 0 // Reset frame timing
         animationFrameRef.current = requestAnimationFrame(processFrameRef.current)
       }
     } catch (err) {

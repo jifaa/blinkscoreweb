@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BlinkScore | Hands-Free Sheet Music Reader</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/geist@1.3.0/dist/fonts/geist.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-background": "#e5e1e4",
+                        "tertiary": "#ffb3af",
+                        "on-primary-container": "#00422b",
+                        "tertiary-fixed": "#ffdad7",
+                        "tertiary-fixed-dim": "#ffb3af",
+                        "on-secondary-fixed": "#23005c",
+                        "on-tertiary-container": "#711419",
+                        "on-secondary-container": "#c4abff",
+                        "primary-fixed-dim": "#4edea3",
+                        "surface": "#131315",
+                        "tertiary-container": "#fc7c78",
+                        "surface-bright": "#1c1c1f",
+                        "outline-variant": "#3c4a42",
+                        "surface-container-low": "#1b1b1d",
+                        "on-primary": "#003824",
+                        "on-tertiary-fixed-variant": "#842225",
+                        "secondary-container": "#571bc1",
+                        "surface-container-highest": "#353437",
+                        "on-tertiary-fixed": "#410005",
+                        "error-container": "#93000a",
+                        "secondary-fixed": "#e9ddff",
+                        "on-error": "#690005",
+                        "on-surface-variant": "#bbcabf",
+                        "on-secondary": "#3c0091",
+                        "on-tertiary": "#650911",
+                        "error": "#ffb4ab",
+                        "surface-dim": "#131315",
+                        "on-secondary-fixed-variant": "#5516be",
+                        "background": "#0e0e10",
+                        "primary": "#4edea3",
+                        "inverse-surface": "#e5e1e4",
+                        "primary-fixed": "#6ffbbe",
+                        "surface-container-lowest": "#0e0e10",
+                        "surface-container-high": "#2a2a2c",
+                        "primary-container": "#10b981",
+                        "on-primary-fixed-variant": "#005236",
+                        "on-primary-fixed": "#002113",
+                        "on-surface": "#e5e1e4",
+                        "surface-variant": "#353437",
+                        "outline": "#86948a",
+                        "surface-container": "#201f21",
+                        "secondary": "#d0bcff",
+                        "inverse-on-surface": "#313032",
+                        "inverse-primary": "#006c49",
+                        "surface-tint": "#4edea3",
+                        "on-error-container": "#ffdad6",
+                        "secondary-fixed-dim": "#d0bcff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "container-max": "1280px",
+                        "unit": "4px",
+                        "margin-desktop": "32px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Geist"],
+                        "headline-lg-mobile": ["Geist"],
+                        "label-sm": ["Geist"],
+                        "body-md": ["Geist"],
+                        "title-md": ["Geist"],
+                        "display-lg": ["Geist"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "title-md": ["20px", {"lineHeight": "28px", "fontWeight": "500"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Geist', sans-serif;
+            background-color: #0e0e10;
+            color: #e5e1e4;
+            scroll-behavior: smooth;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .performance-glow {
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.1);
+        }
+        .performance-glow-hover:hover {
+            box-shadow: 0 0 30px rgba(16, 185, 129, 0.2);
+        }
+        .micro-border {
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .emerald-gradient {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-surface-dim/80 backdrop-blur-md border-b border-white/10 h-16">
+<div class="flex justify-between items-center h-full px-margin-desktop max-w-container-max mx-auto">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-2xl" style="font-variation-settings: 'FILL' 1;">visibility</span>
+<span class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary tracking-tighter">BlinkScore</span>
+</div>
+<nav class="hidden md:flex gap-8 font-body-md text-body-md">
+<a class="text-on-surface-variant hover:text-on-surface transition-colors active:scale-95 transition-transform" href="#features">Features</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors active:scale-95 transition-transform" href="#how-it-works">How it Works</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors active:scale-95 transition-transform" href="#privacy">Privacy</a>
+</nav>
+<button class="bg-primary-container text-on-primary-container px-6 py-2 rounded font-label-sm text-label-sm font-bold active:scale-95 transition-all emerald-gradient">
+                Get Started
+            </button>
+</div>
+</header>
+<main class="pt-16">
+<!-- Hero Section -->
+<section class="relative min-h-[90vh] flex flex-col items-center justify-center text-center px-margin-mobile md:px-margin-desktop overflow-hidden">
+<!-- Atmospheric Glow Background -->
+<div class="absolute -top-48 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[120px] pointer-events-none"></div>
+<div class="z-10 max-w-4xl">
+<div class="inline-flex items-center gap-2 px-3 py-1 bg-surface-bright micro-border rounded-full mb-6">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span class="font-label-sm text-label-sm text-on-surface-variant tracking-wider uppercase">Live on Stage Ready</span>
+</div>
+<h1 class="font-display-lg text-display-lg md:text-[64px] md:leading-tight mb-6">
+                    Turn pages with a <span class="text-primary italic">wink</span>
+</h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl mx-auto mb-10 text-lg">
+                    The hands-free PDF sheet music reader for professional musicians. Keep your hands on your instrument and your eyes on the score.
+                </p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center">
+<button class="emerald-gradient text-on-primary-container px-8 py-4 rounded-lg font-title-md text-title-md font-bold shadow-lg shadow-primary/20 hover:scale-[1.02] transition-transform">
+                        Get Started Free
+                    </button>
+<button class="micro-border bg-white/5 hover:bg-white/10 px-8 py-4 rounded-lg font-title-md text-title-md transition-colors">
+                        Watch Demo
+                    </button>
+</div>
+</div>
+<!-- Hero Mockup Display -->
+<div class="mt-20 w-full max-w-5xl mx-auto relative group">
+<div class="absolute -inset-1 bg-gradient-to-r from-primary/30 to-transparent rounded-xl blur opacity-25 group-hover:opacity-40 transition duration-1000"></div>
+<div class="relative bg-surface-dim micro-border rounded-xl overflow-hidden shadow-2xl">
+<img alt="BlinkScore Reader View showing a professional sheet music score with a minimal HUD for wink detection." class="w-full object-cover aspect-video" src="https://lh3.googleusercontent.com/aida/AP1WRLtOLLMi9Qo3_-vtW98okoqG3bL6sDZv_30aG_dImgXuy5paYLhzTugFKyvZFAPOdzdJZiFvGclqk90tMGIlrGgdTQzwC6hB_ihlUFJcIxB6HLTsjf5rY4SQEO2BpR8Fg7Cew-p_2VVE-SPBsowXkJF8apCsHxSU8asUDdbuyoorCkTryrBitzNpNcClBZuyYDHk7V-f_IBHdudVajp64M_JQmVgulTtZ7tEIBFbdyGOe3G8owcM0ZQMiJFI"/>
+<!-- Decorative Elements -->
+<div class="absolute top-4 left-4 flex gap-2">
+<div class="w-3 h-3 rounded-full bg-error/40"></div>
+<div class="w-3 h-3 rounded-full bg-tertiary/40"></div>
+<div class="w-3 h-3 rounded-full bg-primary/40"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Features Bento Grid -->
+<section class="py-24 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto" id="features">
+<div class="text-center mb-16">
+<h2 class="font-headline-lg text-headline-lg mb-4">Precision Engineered</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Built by musicians, for musicians.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Feature 1: Privacy -->
+<div class="bg-surface-container micro-border p-8 rounded-xl flex flex-col gap-4 group hover:bg-surface-container-high transition-colors performance-glow-hover">
+<div class="w-12 h-12 bg-primary/10 rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-2xl">shield_person</span>
+</div>
+<h3 class="font-title-md text-title-md text-on-surface">100% Private</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                        All video processing happens on your device using WASM. We never see your face, and your camera feed never leaves your browser.
+                    </p>
+</div>
+<!-- Feature 2: Zero Setup -->
+<div class="bg-surface-container micro-border p-8 rounded-xl flex flex-col gap-4 group hover:bg-surface-container-high transition-colors performance-glow-hover">
+<div class="w-12 h-12 bg-primary/10 rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-2xl">bolt</span>
+</div>
+<h3 class="font-title-md text-title-md text-on-surface">Zero Setup</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                        No apps to install. Works instantly in Chrome, Safari, or Firefox on any laptop or tablet with a webcam.
+                    </p>
+</div>
+<!-- Feature 3: Stage Ready -->
+<div class="bg-surface-container micro-border p-8 rounded-xl flex flex-col gap-4 group hover:bg-surface-container-high transition-colors performance-glow-hover">
+<div class="w-12 h-12 bg-primary/10 rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-2xl">visibility</span>
+</div>
+<h3 class="font-title-md text-title-md text-on-surface">Stage-Ready</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                        Minimalist interface designed for low-light environments. Pure black background ensures zero screen bleed into the audience.
+                    </p>
+</div>
+</div>
+</section>
+<!-- How It Works Section -->
+<section class="py-24 bg-surface-container-lowest" id="how-it-works">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="flex flex-col md:flex-row items-center gap-16">
+<div class="flex-1 space-y-12">
+<h2 class="font-display-lg text-display-lg">Simple. Professional. Seamless.</h2>
+<div class="space-y-8">
+<!-- Step 1 -->
+<div class="flex gap-6 items-start">
+<div class="flex-shrink-0 w-10 h-10 rounded-full border border-primary flex items-center justify-center font-bold text-primary">1</div>
+<div>
+<h4 class="font-title-md text-title-md mb-2">Upload PDF</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Drag and drop your sheet music directly into the reader. We support high-resolution PDFs with multi-page optimization.</p>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="flex gap-6 items-start">
+<div class="flex-shrink-0 w-10 h-10 rounded-full border border-primary flex items-center justify-center font-bold text-primary">2</div>
+<div>
+<h4 class="font-title-md text-title-md mb-2">Calibrate Winks</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Our quick 10-second calibration wizard learns your unique winking patterns to distinguish between intentional turns and natural blinking.</p>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="flex gap-6 items-start">
+<div class="flex-shrink-0 w-10 h-10 rounded-full border border-primary flex items-center justify-center font-bold text-primary">3</div>
+<div>
+<h4 class="font-title-md text-title-md mb-2">Start Performing</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Turn pages forward with a right wink and backward with a left wink. Your focus stays entirely on the music.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="flex-1 w-full flex items-center justify-center">
+<div class="relative w-full max-w-md aspect-square bg-surface-container p-8 rounded-3xl micro-border shadow-2xl flex items-center justify-center overflow-hidden">
+<!-- Visual representation of wink detection -->
+<div class="absolute inset-0 opacity-20">
+<div class="w-full h-full" style="background-image: radial-gradient(circle at center, #10b981 1px, transparent 1px); background-size: 20px 20px;"></div>
+</div>
+<div class="relative flex flex-col items-center">
+<div class="w-48 h-24 bg-surface rounded-full border-2 border-primary/40 flex items-center justify-center overflow-hidden">
+<div class="w-20 h-2 bg-primary rounded-full transition-all duration-300" id="eye-sim"></div>
+</div>
+<div class="mt-8 px-4 py-2 bg-primary-container/20 rounded border border-primary/20 text-primary font-label-sm text-label-sm">WINK DETECTED</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Privacy Section -->
+<section class="py-24 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto" id="privacy">
+<div class="bg-surface-container-high rounded-3xl p-8 md:p-16 micro-border overflow-hidden relative">
+<!-- Background Pattern -->
+<div class="absolute right-0 bottom-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
+<div class="grid md:grid-cols-2 gap-12 items-center">
+<div>
+<div class="inline-block p-4 bg-primary/10 rounded-2xl mb-6">
+<span class="material-symbols-outlined text-4xl text-primary" style="font-variation-settings: 'FILL' 1;">lock_person</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg mb-6">Privacy First by Design</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 leading-relaxed">
+                            BlinkScore is built using Google's MediaPipe AI framework, compiled to WebAssembly (WASM) to run locally in your hardware's CPU/GPU.
+                        </p>
+<ul class="space-y-4">
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+<span class="font-body-md text-body-md">No images or video ever sent to a server.</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+<span class="font-body-md text-body-md">Works entirely offline once the page is loaded.</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+<span class="font-body-md text-body-md">Open security protocol with visible source integrity.</span>
+</li>
+</ul>
+</div>
+<div class="flex flex-col gap-4">
+<div class="bg-surface p-6 rounded-xl micro-border">
+<div class="flex justify-between items-center mb-4">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Process Status</span>
+<span class="px-2 py-1 bg-primary/20 text-primary text-[10px] rounded">LOCAL</span>
+</div>
+<div class="space-y-3">
+<div class="h-2 w-full bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[85%]"></div>
+</div>
+<div class="h-2 w-full bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[40%]"></div>
+</div>
+<div class="h-2 w-full bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[65%]"></div>
+</div>
+</div>
+</div>
+<p class="font-label-sm text-label-sm text-center text-on-surface-variant">Real-time performance monitoring with 0ms server latency.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-24 text-center px-margin-mobile">
+<h2 class="font-display-lg text-display-lg mb-8">Ready to perform?</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-10 max-w-xl mx-auto">Join thousands of pianists, organists, and conductors who have upgraded their stage setup.</p>
+<button class="bg-primary text-on-primary px-12 py-5 rounded-lg font-title-md text-title-md font-bold hover:brightness-110 active:scale-95 transition-all shadow-xl shadow-primary/20">
+                Launch App in Browser
+            </button>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 border-t border-white/10 bg-surface-container-lowest">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-gutter px-margin-desktop max-w-container-max mx-auto">
+<div class="col-span-2 md:col-span-1 mb-8">
+<div class="flex items-center gap-2 mb-4">
+<span class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary">BlinkScore</span>
+</div>
+<p class="text-on-surface-variant font-label-sm text-label-sm leading-relaxed">
+                    © 2024 BlinkScore. Built for the stage. High-performance eye-tracking for professional musicians.
+                </p>
+</div>
+<div class="flex flex-col gap-4">
+<h5 class="text-on-surface font-label-sm text-label-sm font-bold uppercase tracking-widest">Product</h5>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-sm text-label-sm" href="#">Features</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-sm text-label-sm" href="#">How it Works</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-sm text-label-sm" href="#">Documentation</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-sm text-label-sm" href="#">API</a>
+</div>
+<div class="flex flex-col gap-4">
+<h5 class="text-on-surface font-label-sm text-label-sm font-bold uppercase tracking-widest">Legal</h5>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-sm text-label-sm" href="#">Privacy</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-sm text-label-sm" href="#">Terms of Service</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-sm text-label-sm" href="#">Security</a>
+</div>
+<div class="flex flex-col gap-4">
+<h5 class="text-on-surface font-label-sm text-label-sm font-bold uppercase tracking-widest">Support</h5>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-sm text-label-sm" href="#">Support Center</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-sm text-label-sm" href="#">Contact</a>
+<div class="flex gap-4 mt-2">
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary cursor-pointer">share</span>
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary cursor-pointer">mail</span>
+</div>
+</div>
+</div>
+</footer>
+<script>
+        // Simple eye wink simulation interaction
+        const eye = document.getElementById('eye-sim');
+        let isClosed = false;
+
+        setInterval(() => {
+            isClosed = !isClosed;
+            if (isClosed) {
+                eye.style.height = '2px';
+                eye.style.backgroundColor = '#10b981';
+            } else {
+                eye.style.height = '48px';
+                eye.style.backgroundColor = 'transparent';
+                eye.style.border = '2px solid rgba(16, 185, 129, 0.4)';
+            }
+        }, 1500);
+
+        // Smooth scroll for nav links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body></html>

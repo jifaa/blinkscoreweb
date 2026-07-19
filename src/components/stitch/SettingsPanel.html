@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BlinkScore Settings | Stage Ready</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=JetBrains+Mono:wght@100..800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=JetBrains+Mono:wght@100..900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-secondary-container": "#b0b2ff",
+                      "primary": "#4edea3",
+                      "on-secondary-fixed": "#07006c",
+                      "secondary-fixed": "#e1e0ff",
+                      "inverse-primary": "#006c49",
+                      "secondary-fixed-dim": "#c0c1ff",
+                      "tertiary": "#ffb3af",
+                      "surface-container-highest": "#333539",
+                      "surface-container-high": "#282a2e",
+                      "on-tertiary-fixed": "#410005",
+                      "on-secondary-fixed-variant": "#2f2ebe",
+                      "on-primary-fixed-variant": "#005236",
+                      "tertiary-fixed": "#ffdad7",
+                      "error": "#ffb4ab",
+                      "inverse-on-surface": "#2f3035",
+                      "surface-container": "#1e2024",
+                      "outline-variant": "#3c4a42",
+                      "surface-variant": "#333539",
+                      "inverse-surface": "#e2e2e8",
+                      "surface-stroke": "#27272A",
+                      "surface-dim": "#111317",
+                      "primary-fixed-dim": "#4edea3",
+                      "surface": "#111317",
+                      "secondary": "#c0c1ff",
+                      "performance-emerald": "#10B981",
+                      "tertiary-fixed-dim": "#ffb3af",
+                      "outline": "#86948a",
+                      "on-surface-variant": "#bbcabf",
+                      "surface-bright": "#37393e",
+                      "background-deep": "#09090B",
+                      "tertiary-container": "#fc7c78",
+                      "on-error-container": "#ffdad6",
+                      "on-primary": "#003824",
+                      "on-tertiary-container": "#711419",
+                      "on-tertiary-fixed-variant": "#842225",
+                      "error-container": "#93000a",
+                      "on-background": "#e2e2e8",
+                      "on-primary-fixed": "#002113",
+                      "surface-container-lowest": "#0c0e12",
+                      "status-warning": "#F59E0B",
+                      "surface-container-low": "#1a1c20",
+                      "surface-tint": "#4edea3",
+                      "on-error": "#690005",
+                      "secondary-container": "#3131c0",
+                      "primary-container": "#10b981",
+                      "primary-fixed": "#6ffbbe",
+                      "background": "#111317",
+                      "surface-elevated": "#18181B",
+                      "on-surface": "#e2e2e8",
+                      "on-tertiary": "#650911",
+                      "status-critical": "#EF4444",
+                      "on-primary-container": "#00422b",
+                      "on-secondary": "#1000a9"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "max-width": "1440px",
+                      "margin-mobile": "16px",
+                      "unit": "4px",
+                      "gutter": "16px",
+                      "margin-desktop": "32px"
+              },
+              "fontFamily": {
+                      "headline-lg": ["Geist"],
+                      "stats-lg": ["JetBrains Mono"],
+                      "body-md": ["Geist"],
+                      "label-mono": ["JetBrains Mono"],
+                      "display-page": ["Geist"]
+              },
+              "fontSize": {
+                      "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                      "stats-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "label-mono": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                      "display-page": ["72px", {"lineHeight": "80px", "letterSpacing": "-0.04em", "fontWeight": "700"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        /* Custom range styling for the technical look */
+        input[type=range] {
+            -webkit-appearance: none;
+            background: transparent;
+        }
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 4px;
+            background: #27272A;
+            border-radius: 2px;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 16px;
+            width: 16px;
+            border-radius: 2px;
+            background: #10B981;
+            cursor: pointer;
+            margin-top: -6px;
+            box-shadow: 0 0 10px rgba(16, 185, 129, 0.4);
+        }
+        
+        .drawer-blur {
+            backdrop-filter: blur(12px);
+        }
+
+        .active-tab-indicator {
+            height: 2px;
+            background-color: #10B981;
+            box-shadow: 0 0 12px #10B981;
+        }
+
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body class="bg-background-deep font-body-md text-on-surface overflow-hidden">
+<!-- Mock Reader Page (Background) -->
+<div class="fixed inset-0 flex items-center justify-center p-8 bg-black opacity-40">
+<div class="w-full max-w-2xl aspect-[3/4] bg-white rounded shadow-2xl flex flex-col items-center justify-center p-12 text-black">
+<div class="w-full border-t-2 border-black mb-12"></div>
+<div class="w-3/4 border-t-2 border-black mb-12"></div>
+<div class="w-full border-t-2 border-black mb-12"></div>
+<div class="w-2/3 border-t-2 border-black mb-12"></div>
+<span class="text-4xl font-serif">Sonata No. 14</span>
+<span class="text-xl font-serif mt-4">Ludwig van Beethoven</span>
+</div>
+</div>
+<!-- Main Navigation (Shared Component Logic) -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop h-16 bg-surface border-b border-surface-stroke">
+<div class="text-stats-lg font-stats-lg font-bold text-primary tracking-tight">BlinkScore</div>
+<div class="flex gap-4">
+<button class="hover:bg-surface-container-highest p-2 rounded transition-colors">
+<span class="material-symbols-outlined">zoom_in</span>
+</button>
+<button class="hover:bg-surface-container-highest p-2 rounded transition-colors">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+<button class="bg-primary-container text-on-primary-container px-4 py-1.5 rounded-lg font-bold text-label-mono flex items-center gap-2 scale-95 hover:scale-100 transition-transform" id="open-settings">
+<span class="material-symbols-outlined text-[18px]">settings</span>
+                SETTINGS
+            </button>
+</div>
+</header>
+<!-- Overlay Backdrop -->
+<div class="fixed inset-0 bg-black/60 z-50 opacity-0 pointer-events-none transition-opacity duration-300" id="drawer-overlay"></div>
+<!-- Right Drawer Panel -->
+<div class="fixed top-0 right-0 h-full w-full max-w-md bg-surface-dim border-l border-surface-stroke z-[60] transform translate-x-full transition-transform duration-300 ease-out shadow-2xl flex flex-col" id="settings-drawer">
+<!-- Drawer Header -->
+<div class="p-6 flex items-center justify-between border-b border-surface-stroke">
+<div class="flex flex-col">
+<h2 class="text-headline-lg font-headline-lg text-on-surface">Settings</h2>
+<p class="text-label-mono text-on-surface-variant text-xs">CALIBRATION & FEEDBACK</p>
+</div>
+<button class="p-2 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-highest rounded-lg transition-all active:scale-90" id="close-settings">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<!-- Technical Tabs Navigation -->
+<nav class="flex border-b border-surface-stroke bg-surface-container-lowest">
+<button class="flex-1 py-4 text-label-mono text-center transition-colors text-performance-emerald font-bold border-b-2 border-performance-emerald" data-tab-id="camera" onclick="switchTab('camera')">
+                CAMERA
+            </button>
+<button class="flex-1 py-4 text-label-mono text-center transition-colors text-on-surface-variant hover:text-on-surface border-b-2 border-transparent" data-tab-id="wink" onclick="switchTab('wink')">
+                WINK
+            </button>
+<button class="flex-1 py-4 text-label-mono text-center transition-colors text-on-surface-variant hover:text-on-surface border-b-2 border-transparent" data-tab-id="feedback" onclick="switchTab('feedback')">
+                FEEDBACK
+            </button>
+</nav>
+<!-- Scrollable Content Area -->
+<div class="flex-1 overflow-y-auto p-6 space-y-8">
+<!-- Tab 1: Camera -->
+<div class="tab-content active space-y-8 animate-in fade-in slide-in-from-right-4 duration-300" id="tab-camera">
+<!-- Camera Preview Mock -->
+<div class="relative w-full aspect-video bg-background-deep border border-surface-stroke rounded-lg overflow-hidden group">
+<div class="w-full h-full bg-cover bg-center grayscale opacity-60 transition-opacity group-hover:opacity-80" data-alt="A high-contrast webcam preview window for a musician on a dimly lit stage. The image shows a silhouette of a violinist from the shoulders up, with emerald green wireframe face tracking lines superimposed over their eyes and nose. The background is a minimalist, deep black music room with professional studio lighting creating sharp edge highlights. The visual style is technical, clean, and futuristic." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA9g9-LSkUzhPFnWvan2Uf5NUYleo-50f5DGzTXHHxjxEzOcislO8w_W0a4lF4xazvHRERSz8cIicM9fvYN3eURHy5vEBqEpemQ5ZrVaG3OoaILrOi60a-Gwxu3Yx4Yt7ycPlKi-7Nt5-DaVDK959gxfBq9fUb9GMWsWvJH0nzB5NnhrI4jiO4G4yVxVoBlnLO3Civo2nkwpozgx0QaWQn1iJWkWrcil2X8i3JVPZRvTZRlk-yiJCa9u7RrMaidik8MlYMd-_oceBI')"></div>
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+<div class="w-24 h-24 border border-performance-emerald/30 rounded-full animate-pulse flex items-center justify-center">
+<div class="w-16 h-16 border-2 border-performance-emerald rounded-full"></div>
+</div>
+</div>
+<div class="absolute bottom-3 left-3 flex items-center gap-2">
+<span class="w-2 h-2 bg-performance-emerald rounded-full animate-pulse"></span>
+<span class="text-label-mono text-[10px] text-performance-emerald bg-black/60 px-2 py-0.5 rounded">AI TRACKING ACTIVE</span>
+</div>
+</div>
+<!-- Selectors -->
+<div class="space-y-6">
+<div class="space-y-2">
+<label class="text-label-mono text-xs text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-[14px]">videocam</span> CAMERA SOURCE
+                        </label>
+<select class="w-full bg-surface-container border border-surface-stroke text-on-surface py-3 px-4 rounded-lg focus:ring-1 focus:ring-performance-emerald focus:border-performance-emerald outline-none appearance-none font-body-md">
+<option>FaceTime HD Camera (Built-in)</option>
+<option>Obsidian Pro Webcam 4K</option>
+<option>External Capture Card</option>
+</select>
+</div>
+<div class="space-y-2">
+<label class="text-label-mono text-xs text-on-surface-variant">PREVIEW QUALITY</label>
+<div class="grid grid-cols-3 gap-2">
+<button class="py-2 border border-surface-stroke rounded-lg text-label-mono text-xs hover:border-performance-emerald transition-colors">LOW</button>
+<button class="py-2 border border-performance-emerald bg-performance-emerald/10 rounded-lg text-label-mono text-xs text-performance-emerald font-bold">MEDIUM</button>
+<button class="py-2 border border-surface-stroke rounded-lg text-label-mono text-xs hover:border-performance-emerald transition-colors">HIGH</button>
+</div>
+</div>
+<div class="space-y-4 pt-2">
+<div class="flex justify-between items-center">
+<label class="text-label-mono text-xs text-on-surface-variant">DETECTION SENSITIVITY</label>
+<span class="text-stats-lg font-stats-lg text-performance-emerald text-sm">82%</span>
+</div>
+<input class="w-full accent-performance-emerald" max="100" min="0" type="range" value="82"/>
+<p class="text-[11px] text-on-surface-variant leading-relaxed">Higher sensitivity improves detection in low light but may increase false triggers from normal blinks.</p>
+</div>
+</div>
+</div>
+<!-- Tab 2: Wink -->
+<div class="tab-content space-y-8" id="tab-wink">
+<!-- Threshold Visualization -->
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-surface-container p-4 rounded-lg border border-surface-stroke flex flex-col items-center gap-2">
+<div class="text-[10px] text-on-surface-variant font-stats-lg">LEFT WINK</div>
+<div class="w-full h-12 bg-black flex items-end justify-center gap-1 p-1">
+<div class="w-2 h-1/4 bg-primary/20"></div>
+<div class="w-2 h-2/4 bg-primary/20"></div>
+<div class="w-2 h-3/4 bg-performance-emerald"></div>
+<div class="w-2 h-2/3 bg-primary/20"></div>
+</div>
+</div>
+<div class="bg-surface-container p-4 rounded-lg border border-surface-stroke flex flex-col items-center gap-2">
+<div class="text-[10px] text-on-surface-variant font-stats-lg">RIGHT WINK</div>
+<div class="w-full h-12 bg-black flex items-end justify-center gap-1 p-1">
+<div class="w-2 h-1/5 bg-primary/20"></div>
+<div class="w-2 h-1/3 bg-primary/20"></div>
+<div class="w-2 h-1/2 bg-primary/20"></div>
+<div class="w-2 h-1/4 bg-primary/20"></div>
+</div>
+</div>
+</div>
+<!-- Sliders -->
+<div class="space-y-6">
+<div class="space-y-3">
+<div class="flex justify-between items-center">
+<label class="text-label-mono text-xs text-on-surface-variant">RIGHT WINK THRESHOLD</label>
+<span class="font-stats-lg text-on-surface text-sm">0.65</span>
+</div>
+<input class="w-full" max="0.9" min="0.1" step="0.01" type="range" value="0.65"/>
+</div>
+<div class="space-y-3">
+<div class="flex justify-between items-center">
+<label class="text-label-mono text-xs text-on-surface-variant">LEFT WINK THRESHOLD</label>
+<span class="font-stats-lg text-on-surface text-sm">0.72</span>
+</div>
+<input class="w-full" max="0.9" min="0.1" step="0.01" type="range" value="0.72"/>
+</div>
+<div class="space-y-3">
+<div class="flex justify-between items-center">
+<label class="text-label-mono text-xs text-on-surface-variant">HOLD DURATION (ms)</label>
+<span class="font-stats-lg text-on-surface text-sm">250ms</span>
+</div>
+<input class="w-full" max="500" min="100" step="10" type="range" value="250"/>
+</div>
+<div class="space-y-3">
+<div class="flex justify-between items-center">
+<label class="text-label-mono text-xs text-on-surface-variant">COOLDOWN (ms)</label>
+<span class="font-stats-lg text-on-surface text-sm">800ms</span>
+</div>
+<input class="w-full" max="1500" min="500" step="50" type="range" value="800"/>
+</div>
+</div>
+<button class="w-full bg-performance-emerald text-background-deep font-bold py-4 rounded-lg flex items-center justify-center gap-2 active:scale-95 transition-transform">
+<span class="material-symbols-outlined">visibility</span>
+                    TEST WINK CALIBRATION
+                </button>
+</div>
+<!-- Tab 3: Feedback -->
+<div class="tab-content space-y-6" id="tab-feedback">
+<div class="bg-surface-container rounded-xl p-4 border border-surface-stroke space-y-6">
+<!-- Page Turn Flash -->
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-body-md font-medium text-on-surface">Page Turn Flash</span>
+<span class="text-xs text-on-surface-variant font-label-mono">SUBTLE SCREEN OVERLAY</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-stroke peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-performance-emerald"></div>
+</label>
+</div>
+<!-- Sound Effects -->
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-body-md font-medium text-on-surface">Sound Effects</span>
+<span class="text-xs text-on-surface-variant font-label-mono">AUDIO CONFIRMATION</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-stroke peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-performance-emerald"></div>
+</label>
+</div>
+<!-- Haptic Feedback -->
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-body-md font-medium text-on-surface">Haptic Feedback</span>
+<span class="text-xs text-on-surface-variant font-label-mono">DEVICE VIBRATION</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-stroke peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-performance-emerald"></div>
+</label>
+</div>
+</div>
+<div class="p-4 border border-surface-stroke/30 rounded-lg flex items-start gap-3 bg-surface-dim">
+<span class="material-symbols-outlined text-performance-emerald text-xl mt-0.5">info</span>
+<p class="text-xs text-on-surface-variant leading-relaxed">
+                        Feedback mechanisms help you confirm triggers without looking away from the music. Page Turn Flash is recommended for dark stage environments.
+                    </p>
+</div>
+</div>
+</div>
+<!-- Sticky Footer Action -->
+<div class="p-6 bg-surface border-t border-surface-stroke">
+<button class="w-full py-4 bg-on-surface text-background-deep font-bold rounded-lg hover:bg-white transition-colors active:scale-95" id="save-settings">
+                SAVE CONFIGURATION
+            </button>
+</div>
+</div>
+<!-- Micro-interaction Script -->
+<script>
+        const drawer = document.getElementById('settings-drawer');
+        const overlay = document.getElementById('drawer-overlay');
+        const openBtn = document.getElementById('open-settings');
+        const closeBtn = document.getElementById('close-settings');
+        const saveBtn = document.getElementById('save-settings');
+
+        function toggleDrawer(isOpen) {
+            if (isOpen) {
+                drawer.classList.remove('translate-x-full');
+                overlay.classList.remove('opacity-0', 'pointer-events-none');
+            } else {
+                drawer.classList.add('translate-x-full');
+                overlay.classList.add('opacity-0', 'pointer-events-none');
+            }
+        }
+
+        openBtn.addEventListener('click', () => toggleDrawer(true));
+        closeBtn.addEventListener('click', () => toggleDrawer(false));
+        overlay.addEventListener('click', () => toggleDrawer(false));
+        saveBtn.addEventListener('click', () => {
+            // Mock Save Interaction
+            saveBtn.innerHTML = '<span class="material-symbols-outlined animate-spin">refresh</span> SAVING...';
+            setTimeout(() => {
+                saveBtn.innerHTML = '<span class="material-symbols-outlined">check_circle</span> SAVED';
+                saveBtn.classList.remove('bg-on-surface');
+                saveBtn.classList.add('bg-performance-emerald');
+                setTimeout(() => {
+                    toggleDrawer(false);
+                    // Reset button for next time
+                    setTimeout(() => {
+                        saveBtn.innerHTML = 'SAVE CONFIGURATION';
+                        saveBtn.classList.add('bg-on-surface');
+                        saveBtn.classList.remove('bg-performance-emerald');
+                    }, 500);
+                }, 800);
+            }, 1200);
+        });
+
+        function switchTab(tabName) {
+            // Hide all contents
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            // Show target content
+            document.getElementById(`tab-${tabName}`).classList.add('active');
+
+            // Update tab button styles
+            document.querySelectorAll('nav button').forEach(btn => {
+                btn.classList.remove('text-performance-emerald', 'font-bold', 'border-performance-emerald');
+                btn.classList.add('text-on-surface-variant', 'border-transparent');
+            });
+            
+            const activeBtn = document.querySelector(`[data-tab-id="${tabName}"]`);
+            activeBtn.classList.add('text-performance-emerald', 'font-bold', 'border-performance-emerald');
+            activeBtn.classList.remove('text-on-surface-variant', 'border-transparent');
+        }
+
+        // Initialize state
+        window.onload = () => {
+            // Auto open for demonstration if needed, but here we stay closed
+        }
+    </script>
+</body></html>

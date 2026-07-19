@@ -29,7 +29,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning className="dark">
       <body
-        className={`${inter.variable} ${jetbrainsMono.variable} min-h-screen flex flex-col antialiased bg-canvas text-ink`}
+        className={`${inter.variable} ${jetbrainsMono.variable} min-h-screen flex flex-col antialiased bg-background text-foreground`}
         suppressHydrationWarning
       >
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} disableTransitionOnChange>

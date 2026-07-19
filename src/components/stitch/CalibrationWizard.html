@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BlinkScore | Calibration Wizard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.cdnfonts.com/css/geist" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Shared Style & Theme Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-container": "#711419",
+                    "surface": "#111317",
+                    "on-secondary-container": "#b0b2ff",
+                    "on-primary-container": "#00422b",
+                    "error-container": "#93000a",
+                    "status-warning": "#F59E0B",
+                    "on-secondary": "#1000a9",
+                    "on-error": "#690005",
+                    "status-critical": "#EF4444",
+                    "surface-bright": "#37393e",
+                    "secondary-container": "#3131c0",
+                    "on-tertiary-fixed-variant": "#842225",
+                    "surface-container-low": "#1a1c20",
+                    "inverse-surface": "#e2e2e8",
+                    "on-secondary-fixed-variant": "#2f2ebe",
+                    "surface-container-lowest": "#0c0e12",
+                    "secondary-fixed-dim": "#c0c1ff",
+                    "performance-emerald": "#10B981",
+                    "inverse-on-surface": "#2f3035",
+                    "on-primary-fixed": "#002113",
+                    "surface-variant": "#333539",
+                    "background-deep": "#09090B",
+                    "on-secondary-fixed": "#07006c",
+                    "tertiary-container": "#fc7c78",
+                    "primary-fixed-dim": "#4edea3",
+                    "tertiary": "#ffb3af",
+                    "on-background": "#e2e2e8",
+                    "tertiary-fixed-dim": "#ffb3af",
+                    "tertiary-fixed": "#ffdad7",
+                    "on-tertiary-fixed": "#410005",
+                    "surface-container-highest": "#333539",
+                    "surface-dim": "#111317",
+                    "on-tertiary": "#650911",
+                    "error": "#ffb4ab",
+                    "on-surface-variant": "#bbcabf",
+                    "secondary-fixed": "#e1e0ff",
+                    "outline-variant": "#3c4a42",
+                    "surface-elevated": "#18181B",
+                    "surface-stroke": "#27272A",
+                    "on-primary": "#003824",
+                    "surface-container-high": "#282a2e",
+                    "primary-fixed": "#6ffbbe",
+                    "primary": "#4edea3",
+                    "background": "#111317",
+                    "secondary": "#c0c1ff",
+                    "on-error-container": "#ffdad6",
+                    "surface-tint": "#4edea3",
+                    "inverse-primary": "#006c49",
+                    "on-surface": "#e2e2e8",
+                    "primary-container": "#10b981",
+                    "on-primary-fixed-variant": "#005236",
+                    "surface-container": "#1e2024",
+                    "outline": "#86948a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "margin-desktop": "32px",
+                    "gutter": "16px",
+                    "unit": "4px",
+                    "max-width": "1440px",
+                    "margin-mobile": "16px"
+            },
+            "fontFamily": {
+                    "headline-lg-mobile": ["Geist"],
+                    "display-page": ["Geist"],
+                    "stats-lg": ["JetBrains Mono"],
+                    "label-mono": ["JetBrains Mono"],
+                    "headline-lg": ["Geist"],
+                    "body-md": ["Geist"]
+            },
+            "fontSize": {
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "display-page": ["72px", {"lineHeight": "80px", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                    "stats-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "label-mono": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #09090B;
+            font-family: 'Geist', sans-serif;
+            color: #e2e2e8;
+            overflow: hidden;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+
+        .step-transition {
+            transition: opacity 0.3s ease-in-out, transform 0.3s ease-out;
+        }
+
+        .blink-gauge {
+            stroke-dasharray: 283;
+            stroke-dashoffset: 283;
+            transition: stroke-dashoffset 0.1s linear;
+        }
+
+        .progress-bar-fill {
+            transition: width 0.1s linear;
+        }
+
+        /* Technical background flicker effect */
+        @keyframes subtle-pulse {
+            0% { opacity: 0.8; }
+            50% { opacity: 1; }
+            100% { opacity: 0.8; }
+        }
+        .animate-pulse-slow {
+            animation: subtle-pulse 4s infinite ease-in-out;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-4">
+<!-- BACKGROUND: Simulated Sheet Music Reader (SCREEN_2) -->
+<div class="fixed inset-0 z-0 opacity-20 pointer-events-none grid grid-cols-2 gap-8 p-12 overflow-hidden">
+<div class="bg-white rounded shadow-2xl flex flex-col items-center justify-start p-12 space-y-8">
+<div class="w-full h-4 bg-gray-200 rounded"></div>
+<div class="w-4/5 h-4 bg-gray-200 rounded"></div>
+<div class="w-full h-4 bg-gray-200 rounded"></div>
+<div class="w-3/4 h-4 bg-gray-200 rounded"></div>
+<div class="grid grid-cols-4 gap-4 w-full">
+<div class="h-24 bg-gray-100 rounded"></div>
+<div class="h-24 bg-gray-100 rounded"></div>
+<div class="h-24 bg-gray-100 rounded"></div>
+<div class="h-24 bg-gray-100 rounded"></div>
+</div>
+<div class="w-full h-4 bg-gray-200 rounded"></div>
+<div class="w-full h-4 bg-gray-200 rounded"></div>
+</div>
+<div class="bg-white rounded shadow-2xl flex flex-col items-center justify-start p-12 space-y-8">
+<div class="w-full h-4 bg-gray-200 rounded"></div>
+<div class="w-full h-4 bg-gray-200 rounded"></div>
+<div class="w-3/4 h-4 bg-gray-200 rounded"></div>
+<div class="grid grid-cols-3 gap-4 w-full">
+<div class="h-32 bg-gray-100 rounded"></div>
+<div class="h-32 bg-gray-100 rounded"></div>
+<div class="h-32 bg-gray-100 rounded"></div>
+</div>
+<div class="w-full h-4 bg-gray-200 rounded"></div>
+<div class="w-5/6 h-4 bg-gray-200 rounded"></div>
+</div>
+</div>
+<!-- MODAL OVERLAY -->
+<div class="fixed inset-0 bg-black/80 backdrop-blur-md z-10"></div>
+<!-- CALIBRATION WIZARD DIALOG -->
+<main class="relative z-20 w-full max-w-2xl bg-surface-elevated border border-surface-stroke rounded-xl shadow-2xl overflow-hidden flex flex-col h-[640px]" id="wizard-container">
+<!-- CLOSE BUTTON -->
+<button class="absolute top-4 right-4 text-on-surface-variant hover:text-white transition-colors p-2 z-30" title="Cancel calibration">
+<span class="material-symbols-outlined">close</span>
+</button>
+<!-- HEADER & STEPPER -->
+<header class="p-8 pb-4 flex flex-col items-center">
+<div class="flex items-center space-x-2 mb-6">
+<span class="material-symbols-outlined text-performance-emerald" style="font-variation-settings: 'FILL' 1;">visibility</span>
+<span class="font-headline-lg text-headline-lg tracking-tight">BlinkScore Calibration</span>
+</div>
+<!-- Stepper -->
+<div class="flex items-center justify-between w-full max-w-md relative">
+<!-- Connective Lines -->
+<div class="absolute top-4 left-0 w-full h-[2px] bg-surface-stroke -z-0"></div>
+<div class="absolute top-4 left-0 h-[2px] bg-performance-emerald transition-all duration-500 -z-0" id="stepper-progress" style="width: 0%;"></div>
+<!-- Steps -->
+<div class="step-node relative z-10 flex flex-col items-center" data-step="1">
+<div class="w-8 h-8 rounded-full border-2 bg-surface-elevated border-performance-emerald text-performance-emerald flex items-center justify-center font-label-mono text-label-mono">1</div>
+</div>
+<div class="step-node relative z-10 flex flex-col items-center" data-step="2">
+<div class="w-8 h-8 rounded-full border-2 bg-surface-elevated border-surface-stroke text-on-surface-variant flex items-center justify-center font-label-mono text-label-mono">2</div>
+</div>
+<div class="step-node relative z-10 flex flex-col items-center" data-step="3">
+<div class="w-8 h-8 rounded-full border-2 bg-surface-elevated border-surface-stroke text-on-surface-variant flex items-center justify-center font-label-mono text-label-mono">3</div>
+</div>
+<div class="step-node relative z-10 flex flex-col items-center" data-step="4">
+<div class="w-8 h-8 rounded-full border-2 bg-surface-elevated border-surface-stroke text-on-surface-variant flex items-center justify-center font-label-mono text-label-mono">4</div>
+</div>
+<div class="step-node relative z-10 flex flex-col items-center" data-step="5">
+<div class="w-8 h-8 rounded-full border-2 bg-surface-elevated border-surface-stroke text-on-surface-variant flex items-center justify-center font-label-mono text-label-mono">5</div>
+</div>
+</div>
+</header>
+<!-- CONTENT CANVAS -->
+<section class="flex-grow flex flex-col p-8 overflow-y-auto">
+<!-- STEP 1: WELCOME -->
+<div class="step-view flex flex-col items-center text-center justify-center h-full space-y-6" id="step-1">
+<div class="w-24 h-24 bg-primary-container/10 border border-performance-emerald/30 rounded-full flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-performance-emerald text-5xl" style="font-variation-settings: 'wght' 200;">settings_accessibility</span>
+</div>
+<h1 class="text-headline-lg font-headline-lg">Let's calibrate your winks</h1>
+<p class="text-body-md font-body-md text-on-surface-variant max-w-sm">
+                    BlinkScore uses your device camera to detect intentional winks for hands-free page turning. This process ensures the system understands your unique facial anatomy.
+                </p>
+<div class="pt-8 w-full max-w-xs">
+<button class="w-full bg-performance-emerald text-background-deep font-bold py-4 rounded-lg flex items-center justify-center gap-2 hover:brightness-110 active:scale-95 transition-all" onclick="nextStep(2)">
+<span>Start Calibration</span>
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- STEP 2: CAMERA CHECK -->
+<div class="step-view hidden flex flex-col items-center h-full space-y-6" id="step-2">
+<div class="relative w-full max-w-md aspect-video bg-surface rounded-xl border border-surface-stroke overflow-hidden shadow-inner group">
+<!-- Simulated Camera Stream with AR Overlays -->
+<div class="absolute inset-0 bg-cover bg-center" data-alt="A focused portrait of a musician in a low-light studio setting, with digital performance emerald green facial landmark tracking lines overlaid on their eyes, nose, and mouth. The image has a crisp, technical feel with high contrast and dark mode aesthetics." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCjjwOlLoGIenLeg0qIhY4P8NBzzfgfd9aN6JhwXPIv2eVt9JdavLX9qD-iwI5CsBCTK2zimcy5RuGtFG3EJgsjWkGZ4sUXb-npXe9R2FcvyezKKl4EE1CcBjRPa_oTMyc_F6UG07oZe4QHFtu02gMIHPU10xqvF91pFhkVA6qDsafGNhTB_8rr_o4l9OdhxUOL8FBkQh_S_c2_Cp4KXoFlSVTTMH-VF2r3d7Njtd2hlLvMR0ZWYMw1eyo2kIXmC8HnEdhi1F6KDy8')"></div>
+<!-- Scanning HUD -->
+<div class="absolute inset-0 border-[2px] border-performance-emerald/20 pointer-events-none"></div>
+<div class="absolute top-4 left-4 font-label-mono text-label-mono text-performance-emerald flex items-center gap-2 bg-black/60 px-3 py-1 rounded">
+<span class="w-2 h-2 rounded-full bg-performance-emerald animate-pulse"></span>
+                        LIVE_FEED_01
+                    </div>
+<!-- Alignment Guide -->
+<div class="absolute inset-0 flex items-center justify-center opacity-40">
+<div class="w-48 h-48 border border-performance-emerald rounded-full border-dashed"></div>
+</div>
+</div>
+<div class="flex items-center gap-3 bg-surface-container-high px-4 py-2 rounded-full border border-performance-emerald/20">
+<span class="material-symbols-outlined text-performance-emerald">check_circle</span>
+<span class="font-label-mono text-label-mono uppercase tracking-wider text-performance-emerald">Face Detected</span>
+</div>
+<p class="text-body-md font-body-md text-on-surface-variant text-center max-w-xs">
+                    Position your tablet at a comfortable music stand distance. Ensure your face is centered in the frame.
+                </p>
+<div class="pt-4 w-full max-w-xs">
+<button class="w-full bg-performance-emerald text-background-deep font-bold py-4 rounded-lg flex items-center justify-center gap-2 hover:brightness-110 active:scale-95 transition-all" onclick="nextStep(3)">
+<span>Check Alignment</span>
+</button>
+</div>
+</div>
+<!-- STEP 3: RIGHT WINK -->
+<div class="step-view hidden flex flex-col items-center justify-between h-full py-4" id="step-3">
+<div class="text-center">
+<h2 class="text-headline-lg font-headline-lg mb-2">Wink your right eye</h2>
+<p class="text-body-md font-body-md text-on-surface-variant">Perform a slow, clear wink to set threshold</p>
+</div>
+<!-- Circular Gauge -->
+<div class="relative w-48 h-48 flex items-center justify-center">
+<svg class="w-full h-full -rotate-90">
+<circle class="stroke-surface-stroke fill-none stroke-[8]" cx="96" cy="96" r="90"></circle>
+<circle class="blink-gauge stroke-performance-emerald fill-none stroke-[8] stroke-round" cx="96" cy="96" id="right-gauge" r="90" style="stroke-dashoffset: 283;"></circle>
+</svg>
+<div class="absolute flex flex-col items-center">
+<span class="font-stats-lg text-stats-lg text-white" id="right-score">0.00</span>
+<span class="font-label-mono text-[10px] uppercase text-on-surface-variant">Intensity</span>
+</div>
+</div>
+<div class="w-full max-w-sm space-y-4">
+<div class="flex justify-between font-label-mono text-label-mono text-on-surface-variant px-1">
+<span>HOLD STEADY</span>
+<span id="right-timer">0%</span>
+</div>
+<div class="w-full h-2 bg-surface-stroke rounded-full overflow-hidden">
+<div class="progress-bar-fill h-full bg-performance-emerald w-0" id="right-progress"></div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4 w-full text-center">
+<div class="bg-surface-container p-3 rounded border border-surface-stroke">
+<div class="font-label-mono text-[10px] text-on-surface-variant uppercase mb-1">Latency</div>
+<div class="font-stats-lg text-stats-lg text-white">42ms</div>
+</div>
+<div class="bg-surface-container p-3 rounded border border-surface-stroke">
+<div class="font-label-mono text-[10px] text-on-surface-variant uppercase mb-1">Signal</div>
+<div class="font-stats-lg text-stats-lg text-performance-emerald">Strong</div>
+</div>
+</div>
+</div>
+<!-- STEP 4: LEFT WINK -->
+<div class="step-view hidden flex flex-col items-center justify-between h-full py-4" id="step-4">
+<div class="text-center">
+<h2 class="text-headline-lg font-headline-lg mb-2">Wink your left eye</h2>
+<p class="text-body-md font-body-md text-on-surface-variant">Repeat the process for the opposite eye</p>
+</div>
+<!-- Circular Gauge -->
+<div class="relative w-48 h-48 flex items-center justify-center">
+<svg class="w-full h-full -rotate-90">
+<circle class="stroke-surface-stroke fill-none stroke-[8]" cx="96" cy="96" r="90"></circle>
+<circle class="blink-gauge stroke-performance-emerald fill-none stroke-[8] stroke-round" cx="96" cy="96" id="left-gauge" r="90" style="stroke-dashoffset: 283;"></circle>
+</svg>
+<div class="absolute flex flex-col items-center">
+<span class="font-stats-lg text-stats-lg text-white" id="left-score">0.00</span>
+<span class="font-label-mono text-[10px] uppercase text-on-surface-variant">Intensity</span>
+</div>
+</div>
+<div class="w-full max-w-sm space-y-4">
+<div class="flex justify-between font-label-mono text-label-mono text-on-surface-variant px-1">
+<span>HOLD STEADY</span>
+<span id="left-timer">0%</span>
+</div>
+<div class="w-full h-2 bg-surface-stroke rounded-full overflow-hidden">
+<div class="progress-bar-fill h-full bg-performance-emerald w-0" id="left-progress"></div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4 w-full text-center">
+<div class="bg-surface-container p-3 rounded border border-surface-stroke">
+<div class="font-label-mono text-[10px] text-on-surface-variant uppercase mb-1">Latency</div>
+<div class="font-stats-lg text-stats-lg text-white">38ms</div>
+</div>
+<div class="bg-surface-container p-3 rounded border border-surface-stroke">
+<div class="font-label-mono text-[10px] text-on-surface-variant uppercase mb-1">Signal</div>
+<div class="font-stats-lg text-stats-lg text-performance-emerald">Strong</div>
+</div>
+</div>
+</div>
+<!-- STEP 5: COMPLETE -->
+<div class="step-view hidden flex flex-col items-center justify-center h-full space-y-8" id="step-5">
+<div class="relative">
+<div class="w-24 h-24 rounded-full bg-performance-emerald flex items-center justify-center animate-bounce shadow-[0_0_30px_rgba(16,185,129,0.4)]">
+<span class="material-symbols-outlined text-background-deep text-5xl font-bold">check</span>
+</div>
+</div>
+<div class="text-center">
+<h2 class="text-headline-lg font-headline-lg mb-2">Calibration Complete</h2>
+<p class="text-body-md font-body-md text-on-surface-variant">BlinkScore is now synced to your vision.</p>
+</div>
+<!-- Summary Card -->
+<div class="w-full max-w-sm bg-surface-container-low border border-surface-stroke rounded-xl overflow-hidden divide-y divide-surface-stroke">
+<div class="p-4 flex justify-between items-center">
+<span class="font-label-mono text-label-mono text-on-surface-variant">Threshold Sensitivity</span>
+<span class="font-stats-lg text-stats-lg text-performance-emerald">0.82</span>
+</div>
+<div class="p-4 flex justify-between items-center">
+<span class="font-label-mono text-label-mono text-on-surface-variant">Cooldown Period</span>
+<span class="font-stats-lg text-stats-lg text-white">350ms</span>
+</div>
+<div class="p-4 flex justify-between items-center">
+<span class="font-label-mono text-label-mono text-on-surface-variant">Ambient Compensation</span>
+<span class="font-stats-lg text-stats-lg text-white">Active</span>
+</div>
+</div>
+<div class="pt-4 w-full max-w-xs">
+<button class="w-full bg-performance-emerald text-background-deep font-bold py-4 rounded-lg flex items-center justify-center gap-2 hover:brightness-110 active:scale-95 transition-all" onclick="window.location.reload()">
+<span>Save &amp; Start Reader</span>
+</button>
+</div>
+</div>
+</section>
+<!-- FOOTER: Branding / Credits -->
+<footer class="px-8 py-4 bg-surface-container-lowest border-t border-surface-stroke flex justify-between items-center">
+<span class="font-label-mono text-[10px] text-on-surface-variant/50 tracking-widest uppercase">System Ready // BlinkScore V1.0.4</span>
+<div class="flex gap-4">
+<span class="font-label-mono text-[10px] text-on-surface-variant hover:text-white cursor-pointer transition-colors">HELP</span>
+<span class="font-label-mono text-[10px] text-on-surface-variant hover:text-white cursor-pointer transition-colors">BYPASS</span>
+</div>
+</footer>
+</main>
+<script>
+        let currentStep = 1;
+        const totalSteps = 5;
+
+        function updateStepper(step) {
+            const nodes = document.querySelectorAll('.step-node');
+            const progressBar = document.getElementById('stepper-progress');
+            
+            // Progress line width
+            const progressPercent = ((step - 1) / (totalSteps - 1)) * 100;
+            progressBar.style.width = `${progressPercent}%`;
+
+            nodes.forEach(node => {
+                const nodeStep = parseInt(node.dataset.step);
+                const circle = node.querySelector('div');
+                
+                if (nodeStep < step) {
+                    // Completed
+                    circle.innerHTML = '<span class="material-symbols-outlined text-sm">check</span>';
+                    circle.classList.add('bg-performance-emerald', 'border-performance-emerald', 'text-background-deep');
+                    circle.classList.remove('bg-surface-elevated', 'border-surface-stroke', 'text-performance-emerald');
+                } else if (nodeStep === step) {
+                    // Current
+                    circle.innerHTML = nodeStep;
+                    circle.classList.add('border-performance-emerald', 'text-performance-emerald');
+                    circle.classList.remove('bg-performance-emerald', 'text-background-deep', 'border-surface-stroke');
+                } else {
+                    // Upcoming
+                    circle.innerHTML = nodeStep;
+                    circle.classList.remove('border-performance-emerald', 'text-performance-emerald', 'bg-performance-emerald', 'text-background-deep');
+                    circle.classList.add('border-surface-stroke', 'text-on-surface-variant');
+                }
+            });
+        }
+
+        function nextStep(step) {
+            // Hide current view
+            document.querySelector(`.step-view:not(.hidden)`).classList.add('hidden');
+            // Show new view
+            const newView = document.getElementById(`step-${step}`);
+            newView.classList.remove('hidden');
+            newView.classList.add('opacity-0', 'translate-y-4');
+            
+            setTimeout(() => {
+                newView.classList.remove('opacity-0', 'translate-y-4');
+                newView.classList.add('step-transition');
+            }, 10);
+
+            currentStep = step;
+            updateStepper(step);
+
+            // Simulation Logic for Step 3 & 4
+            if (step === 3) startSim('right');
+            if (step === 4) startSim('left');
+        }
+
+        function startSim(eye) {
+            let progress = 0;
+            const scoreEl = document.getElementById(`${eye}-score`);
+            const gaugeEl = document.getElementById(`${eye}-gauge`);
+            const progressEl = document.getElementById(`${eye}-progress`);
+            const timerEl = document.getElementById(`${eye}-timer`);
+            
+            const interval = setInterval(() => {
+                progress += 1;
+                
+                // Random intensity noise
+                const intensity = (0.7 + Math.random() * 0.25).toFixed(2);
+                scoreEl.innerText = intensity;
+                
+                // Gauge offset calculation (283 is max dasharray)
+                const offset = 283 - (intensity * 283);
+                gaugeEl.style.strokeDashoffset = offset;
+
+                // Overall Step Progress
+                progressEl.style.width = `${progress}%`;
+                timerEl.innerText = `${progress}%`;
+
+                if (progress >= 100) {
+                    clearInterval(interval);
+                    setTimeout(() => {
+                        nextStep(eye === 'right' ? 4 : 5);
+                    }, 800);
+                }
+            }, 30);
+        }
+
+        // Handle Escape Key to "Close"
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                alert('Calibration cancelled. Returning to main menu.');
+            }
+        });
+
+        // Initialize UI
+        updateStepper(1);
+    </script>
+</body></html>
