@@ -1,0 +1,304 @@
+@import "tailwindcss";
+
+/* ============================================
+   BlinkScore Design System
+   Based on Linear-inspired design tokens (DESIGN.md)
+   ============================================ */
+
+/* === COLOR TOKENS === */
+:root {
+  /* Primary / Accent */
+  --color-primary: #5e6ad2;
+  --color-primary-hover: #828fff;
+  --color-primary-focus: #5e69d1;
+  --color-on-primary: #ffffff;
+
+  /* Surface Ladder (dark canvas system) */
+  --color-canvas: #010102;
+  --color-surface-1: #0f1011;
+  --color-surface-2: #141516;
+  --color-surface-3: #18191a;
+  --color-surface-4: #191a1b;
+
+  /* Hairline Borders */
+  --color-hairline: #23252a;
+  --color-hairline-strong: #34343a;
+  --color-hairline-tertiary: #3e3e44;
+
+  /* Text */
+  --color-ink: #f7f8f8;
+  --color-ink-muted: #d0d6e0;
+  --color-ink-subtle: #8a8f98;
+  --color-ink-tertiary: #62666d;
+
+  /* Semantic */
+  --color-semantic-success: #27a644;
+  --color-brand-secure: #7a7fad;
+  --color-semantic-overlay: #000000;
+
+  /* Legacy mappings for existing components */
+  --background: var(--color-canvas);
+  --foreground: var(--color-ink);
+  --card: var(--color-surface-1);
+  --card-foreground: var(--color-ink);
+  --popover: var(--color-surface-1);
+  --popover-foreground: var(--color-ink);
+  --primary: var(--color-primary);
+  --primary-foreground: var(--color-on-primary);
+  --secondary: var(--color-surface-2);
+  --secondary-foreground: var(--color-ink);
+  --muted: var(--color-surface-3);
+  --muted-foreground: var(--color-ink-subtle);
+  --accent: var(--color-surface-2);
+  --accent-foreground: var(--color-ink);
+  --destructive: #ef4444;
+  --destructive-foreground: var(--color-on-primary);
+  --border: var(--color-hairline);
+  --input: var(--color-surface-1);
+  --ring: var(--color-primary);
+}
+
+/* === TYPOGRAPHY SCALE === */
+/* Linear Display for headlines, Linear Text for body */
+:root {
+  --font-display: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-sans: var(--font-display);
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
+
+  /* Type scale - applied via utility classes */
+  --text-display-xl: 80px;
+  --text-display-lg: 56px;
+  --text-display-md: 40px;
+  --text-headline: 28px;
+  --text-card-title: 22px;
+  --text-subhead: 20px;
+  --text-body-lg: 18px;
+  --text-body: 16px;
+  --text-body-sm: 14px;
+  --text-caption: 12px;
+  --text-button: 14px;
+  --text-eyebrow: 13px;
+  --text-mono: 13px;
+}
+
+/* === SPACING TOKENS === */
+:root {
+  --space-xxs: 4px;
+  --space-xs: 8px;
+  --space-sm: 12px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-xxl: 48px;
+  --space-section: 96px;
+}
+
+/* === RADIUS TOKENS === */
+:root {
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-xxl: 24px;
+  --radius-pill: 9999px;
+  --radius-full: 9999px;
+}
+
+/* === TAILWIND THEME INTEGRATION === */
+@theme inline {
+  /* Colors */
+  --color-canvas: var(--color-canvas);
+  --color-surface-1: var(--color-surface-1);
+  --color-surface-2: var(--color-surface-2);
+  --color-surface-3: var(--color-surface-3);
+  --color-surface-4: var(--color-surface-4);
+  --color-hairline: var(--color-hairline);
+  --color-hairline-strong: var(--color-hairline-strong);
+  --color-hairline-tertiary: var(--color-hairline-tertiary);
+  --color-ink: var(--color-ink);
+  --color-ink-muted: var(--color-ink-muted);
+  --color-ink-subtle: var(--color-ink-subtle);
+  --color-ink-tertiary: var(--color-ink-tertiary);
+  --color-brand-secure: var(--color-brand-secure);
+  --color-semantic-success: var(--color-semantic-success);
+
+  /* Semantic */
+  --color-background: var(--color-canvas);
+  --color-foreground: var(--color-ink);
+  --color-card: var(--color-surface-1);
+  --color-card-foreground: var(--color-ink);
+  --color-popover: var(--color-surface-1);
+  --color-popover-foreground: var(--color-ink);
+  --color-primary: var(--color-primary);
+  --color-primary-hover: var(--color-primary-hover);
+  --color-primary-focus: var(--color-primary-focus);
+  --color-primary-foreground: var(--color-on-primary);
+  --color-secondary: var(--color-surface-2);
+  --color-secondary-foreground: var(--color-ink);
+  --color-muted: var(--color-surface-3);
+  --color-muted-foreground: var(--color-ink-subtle);
+  --color-accent: var(--color-surface-2);
+  --color-accent-foreground: var(--color-ink);
+  --color-destructive: #ef4444;
+  --color-destructive-foreground: var(--color-on-primary);
+  --color-border: var(--color-hairline);
+  --color-input: var(--color-surface-1);
+  --color-ring: var(--color-primary);
+
+  /* Radius */
+  --radius-xs: var(--radius-xs);
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-xl: var(--radius-xl);
+  --radius-xxl: var(--radius-xxl);
+
+  /* Fonts */
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+}
+
+/* === BASE STYLES === */
+* {
+  border-color: var(--color-hairline);
+}
+
+body {
+  background: var(--color-canvas);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* === CUSTOM SELECTION === */
+::selection {
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+}
+
+/* === SCROLLBAR STYLING === */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-canvas);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-hairline-strong);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-hairline-tertiary);
+}
+
+/* === FOCUS STYLES === */
+/* Accent color ONLY for focus rings per DESIGN.md */
+:focus-visible {
+  outline: 2px solid var(--color-primary-focus);
+  outline-offset: 2px;
+}
+
+/* === ELEVATION UTILITIES === */
+/* Level 0: flat */
+.elevation-0 {
+  background: var(--color-canvas);
+}
+
+/* Level 1: charcoal lift (surface-1 on canvas) */
+.elevation-1 {
+  background: var(--color-surface-1);
+  border: 1px solid var(--color-hairline);
+}
+
+/* Level 2: surface-2 lift */
+.elevation-2 {
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-hairline-strong);
+}
+
+/* Level 3: surface-3 lift (for dropdowns, menus) */
+.elevation-3 {
+  background: var(--color-surface-3);
+}
+
+/* Level 4: focus ring is handled by focus-visible */
+
+/* === TYPOGRAPHY UTILITIES === */
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+/* Display sizes with negative tracking */
+.text-display-xl {
+  font-size: var(--text-display-xl);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -3px;
+}
+
+.text-display-lg {
+  font-size: var(--text-display-lg);
+  font-weight: 600;
+  line-height: 1.10;
+  letter-spacing: -1.8px;
+}
+
+.text-display-md {
+  font-size: var(--text-display-md);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -1px;
+}
+
+.text-headline {
+  font-size: var(--text-headline);
+  font-weight: 600;
+  line-height: 1.20;
+  letter-spacing: -0.6px;
+}
+
+.text-card-title {
+  font-size: var(--text-card-title);
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.4px;
+}
+
+.text-subhead {
+  font-size: var(--text-subhead);
+  font-weight: 400;
+  line-height: 1.40;
+  letter-spacing: -0.2px;
+}
+
+.text-body-lg {
+  font-size: var(--text-body-lg);
+  font-weight: 400;
+  line-height: 1.50;
+  letter-spacing: -0.1px;
+}
+
+.text-eyebrow {
+  font-size: var(--text-eyebrow);
+  font-weight: 500;
+  line-height: 1.30;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+
+.text-mono {
+  font-family: var(--font-mono);
+  font-size: var(--text-mono);
+  line-height: 1.50;
+  letter-spacing: 0;
+}
