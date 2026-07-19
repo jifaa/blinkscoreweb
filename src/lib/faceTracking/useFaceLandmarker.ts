@@ -69,6 +69,8 @@ export function useFaceLandmarker({
 
   // Initialize Face Landmarker
   useEffect(() => {
+    let cancelled = false
+
     const initLandmarker = async () => {
       try {
         const vision = await FilesetResolver.forVisionTasks(
@@ -83,7 +85,9 @@ export function useFaceLandmarker({
           runningMode: "VIDEO",
           numFaces: 1,
         })
-        landmarkerRef.current = landmarker
+        if (!cancelled) {
+          landmarkerRef.current = landmarker
+        }
       } catch (gpuErr) {
         // GPU delegate failed - try CPU fallback
         console.warn("GPU delegate failed, falling back to CPU:", gpuErr)
@@ -100,25 +104,34 @@ export function useFaceLandmarker({
             runningMode: "VIDEO",
             numFaces: 1,
           })
-          landmarkerRef.current = landmarker
+          if (!cancelled) {
+            landmarkerRef.current = landmarker
+          }
         } catch (cpuErr) {
           console.error("CPU fallback also failed:", cpuErr)
-          setError("Failed to initialize face detection. Please refresh the page.")
-          setIsSupported(false)
+          if (!cancelled) {
+            setError("Failed to initialize face detection. Please refresh the page.")
+            setIsSupported(false)
+          }
         }
       } finally {
-        setIsLoading(false)
+        if (!cancelled) {
+          setIsLoading(false)
+        }
       }
     }
 
     initLandmarker()
 
     return () => {
+      cancelled = true
       if (landmarkerRef.current) {
         landmarkerRef.current.close()
+        landmarkerRef.current = null
       }
     }
   }, [])
+
 
   // Extract blink scores from blendshapes
   const extractBlinkScores = useCallback((blendshapes: FaceLandmarkerResult): FaceBlinkScores | null => {
