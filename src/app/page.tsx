@@ -20,37 +20,34 @@ export default function Home() {
         </div>
         <div className="flex items-center gap-3">
           <Link href="/reader">
-            <Button variant="secondary" size="sm">Sign In</Button>
-          </Link>
-          <Link href="/reader">
             <Button size="sm">Get Started</Button>
           </Link>
         </div>
       </nav>
 
       {/* Hero Section - Linear dense product-focused style */}
-      <section className="flex-1 flex items-center justify-center py-section px-6">
+      <section className="flex-1 flex items-center justify-center py-24 px-6">
         <div className="max-w-4xl mx-auto text-center">
           {/* Eyebrow */}
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-pill bg-surface-1 border border-hairline text-ink-subtle text-xs font-medium mb-8">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-pill bg-surface-1 border border-hairline text-ink-subtle text-xs font-medium mb-6">
             <Eye className="w-3.5 h-3.5 text-primary" />
             Hands-free page turning for musicians
           </div>
 
           {/* Main heading with negative tracking */}
-          <h1 className="text-display-lg font-semibold tracking-tight mb-6 text-ink">
+          <h1 className="text-display-lg font-semibold tracking-tight mb-4 text-ink">
             Turn Pages with{" "}
             <span className="text-primary">Your Eyes</span>
           </h1>
 
           {/* Subheading */}
-          <p className="text-subhead text-ink-muted max-w-2xl mx-auto mb-10">
+          <p className="text-subhead text-ink-muted max-w-2xl mx-auto mb-8">
             BlinkScore uses your webcam to detect eye winks and turn sheet music pages
             automatically. 100% private — all processing happens in your browser.
           </p>
 
           {/* CTA buttons - Linear primary + secondary */}
-          <div className="flex items-center justify-center gap-4">
+          <div className="flex items-center justify-center gap-3">
             <Link href="/reader">
               <Button size="lg" className="h-11 px-6">
                 Get Started Free
@@ -73,47 +70,47 @@ export default function Home() {
       </section>
 
       {/* Features Section - 3-column card grid */}
-      <section id="features" className="py-section px-6 border-t border-hairline">
+      <section id="features" className="py-16 px-6 border-t border-hairline">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-headline font-semibold text-ink mb-3">Built for Performers</h2>
+          <div className="text-center mb-10">
+            <h2 className="text-headline font-semibold text-ink mb-2">Built for Performers</h2>
             <p className="text-body text-ink-subtle max-w-xl mx-auto">
               Everything you need for distraction-free performances
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-3 gap-5">
             {/* Feature 1 - Natural Winks */}
-            <div className="bg-surface-1 border border-hairline rounded-lg p-lg">
-              <div className="w-10 h-10 bg-primary/10 rounded-md flex items-center justify-center mb-5">
-                <Eye className="w-5 h-5 text-primary" />
+            <div className="bg-surface-1 border border-hairline rounded-lg p-5">
+              <div className="w-9 h-9 bg-primary/10 rounded-md flex items-center justify-center mb-4">
+                <Eye className="w-4 h-4 text-primary" />
               </div>
-              <h3 className="text-card-title font-medium text-ink mb-2">Natural Winks</h3>
-              <p className="text-body text-ink-subtle">
+              <h3 className="text-card-title font-medium text-ink mb-1.5">Natural Winks</h3>
+              <p className="text-body-sm text-ink-subtle leading-relaxed">
                 Right eye wink advances, left eye wink goes back. Normal blinking won&apos;t trigger
                 page turns — only intentional winks.
               </p>
             </div>
 
             {/* Feature 2 - 100% Private */}
-            <div className="bg-surface-1 border border-hairline rounded-lg p-lg">
-              <div className="w-10 h-10 bg-semantic-success/10 rounded-md flex items-center justify-center mb-5">
-                <Shield className="w-5 h-5 text-semantic-success" />
+            <div className="bg-surface-1 border border-hairline rounded-lg p-5">
+              <div className="w-9 h-9 bg-semantic-success/10 rounded-md flex items-center justify-center mb-4">
+                <Shield className="w-4 h-4 text-semantic-success" />
               </div>
-              <h3 className="text-card-title font-medium text-ink mb-2">100% Private</h3>
-              <p className="text-body text-ink-subtle">
+              <h3 className="text-card-title font-medium text-ink mb-1.5">100% Private</h3>
+              <p className="text-body-sm text-ink-subtle leading-relaxed">
                 All video processing happens locally in your browser using WebAssembly. No servers,
                 no uploads, no subscriptions.
               </p>
             </div>
 
             {/* Feature 3 - Stage Ready */}
-            <div className="bg-surface-1 border border-hairline rounded-lg p-lg">
-              <div className="w-10 h-10 bg-brand-secure/20 rounded-md flex items-center justify-center mb-5">
-                <Zap className="w-5 h-5 text-brand-secure" />
+            <div className="bg-surface-1 border border-hairline rounded-lg p-5">
+              <div className="w-9 h-9 bg-brand-secure/10 rounded-md flex items-center justify-center mb-4">
+                <Zap className="w-4 h-4 text-brand-secure" />
               </div>
-              <h3 className="text-card-title font-medium text-ink mb-2">Stage Ready</h3>
-              <p className="text-body text-ink-subtle">
+              <h3 className="text-card-title font-medium text-ink mb-1.5">Stage Ready</h3>
+              <p className="text-body-sm text-ink-subtle leading-relaxed">
                 Fullscreen performance mode with auto-hiding controls. Screen stays awake during
                 your performance.
               </p>
@@ -123,10 +120,10 @@ export default function Home() {
       </section>
 
       {/* How It Works Section */}
-      <section id="how-it-works" className="py-section px-6 border-t border-hairline">
+      <section id="how-it-works" className="py-16 px-6 border-t border-hairline">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-headline font-semibold text-ink mb-3">How It Works</h2>
+          <div className="text-center mb-10">
+            <h2 className="text-headline font-semibold text-ink mb-2">How It Works</h2>
             <p className="text-body text-ink-subtle max-w-xl mx-auto">
               Get started in under a minute
             </p>
@@ -170,10 +167,10 @@ export default function Home() {
       </section>
 
       {/* Use Cases Section */}
-      <section id="use-cases" className="py-section px-6 border-t border-hairline">
+      <section id="use-cases" className="py-16 px-6 border-t border-hairline">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-headline font-semibold text-ink mb-3">Perfect For</h2>
+          <div className="text-center mb-8">
+            <h2 className="text-headline font-semibold text-ink mb-2">Perfect For</h2>
           </div>
 
           <div className="grid md:grid-cols-2 gap-4">
@@ -225,10 +222,10 @@ export default function Home() {
       </section>
 
       {/* Fallback Controls Section - Important for accessibility */}
-      <section className="py-section px-6 border-t border-hairline bg-surface-1">
+      <section className="py-12 px-6 border-t border-hairline bg-surface-1">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-headline font-semibold text-ink mb-3">Always Have Control</h2>
-          <p className="text-body text-ink-subtle max-w-xl mx-auto mb-8">
+          <h2 className="text-headline font-semibold text-ink mb-2">Always Have Control</h2>
+          <p className="text-body text-ink-subtle max-w-xl mx-auto mb-6">
             In addition to wink detection, BlinkScore includes keyboard shortcuts and manual buttons
             for complete reliability.
           </p>
@@ -250,12 +247,12 @@ export default function Home() {
       </section>
 
       {/* CTA Section - Linear cta-banner style */}
-      <section className="py-xxl px-6 border-t border-hairline">
+      <section className="py-12 px-6 border-t border-hairline">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-headline font-semibold text-ink mb-4">
+          <h2 className="text-headline font-semibold text-ink mb-3">
             Ready to Turn Pages Hands-Free?
           </h2>
-          <p className="text-body text-ink-subtle mb-8 max-w-xl mx-auto">
+          <p className="text-body text-ink-subtle mb-6 max-w-xl mx-auto">
             Join musicians who perform with confidence, knowing their page turns are reliable and
             completely private.
           </p>

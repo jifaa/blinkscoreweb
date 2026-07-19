@@ -1,6 +1,6 @@
 "use client"
 
-import { useCallback } from "react"
+import { useCallback, useEffect, useRef } from "react"
 import type { FaceBlinkScores, CalibrationData, CalibrationResult } from "./types"
 import { useReaderStore } from "~/store/useReaderStore"
 
@@ -10,6 +10,21 @@ const MIN_THRESHOLD_GAP = 0.1 // Minimum gap between high and low thresholds
 export function useWinkClassifier() {
   const { settings } = useReaderStore()
   const { calibration } = settings
+  const debugLoggedRef = useRef(false)
+
+  // Debug: log calibration values on mount
+  useEffect(() => {
+    if (process.env.NODE_ENV === 'development' && !debugLoggedRef.current) {
+      console.debug('[winkClassifier] Calibration loaded:', {
+        highThreshold: calibration.highThreshold,
+        lowThreshold: calibration.lowThreshold,
+        winkDuration: calibration.winkDuration,
+        cooldown: calibration.cooldown,
+        isCalibrated: settings.isCalibrated,
+      })
+      debugLoggedRef.current = true
+    }
+  }, [calibration.highThreshold, calibration.lowThreshold, calibration.winkDuration, calibration.cooldown, settings.isCalibrated])
 
   // Classify if current scores indicate a wink
   const classifyWink = useCallback(

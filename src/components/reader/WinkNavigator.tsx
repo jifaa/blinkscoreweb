@@ -137,7 +137,22 @@ export function WinkNavigator({ blinkScores, onWinkDetected }: WinkNavigatorProp
     }
 
     // Classify the wink
-    const { direction, confidence: _confidence } = classifyWink(blinkScores)
+    const result = classifyWink(blinkScores)
+    const { direction } = result
+
+    // Debug logging (remove in production)
+    if (process.env.NODE_ENV === 'development') {
+      console.debug('[WinkNavigator]', {
+        leftEye: blinkScores.leftEye.toFixed(3),
+        rightEye: blinkScores.rightEye.toFixed(3),
+        direction,
+        confidence: result.confidence.toFixed(3),
+        isCalibrated: settings.isCalibrated,
+        highThreshold: calibration.highThreshold.toFixed(3),
+        lowThreshold: calibration.lowThreshold.toFixed(3),
+        winkDuration: calibration.winkDuration,
+      })
+    }
 
     if (direction === "none") {
       // No wink detected, reset state
@@ -156,11 +171,24 @@ export function WinkNavigator({ blinkScores, onWinkDetected }: WinkNavigatorProp
 
     // Check if wink has persisted long enough
     const duration = Date.now() - stateStartRef.current.timestamp
+
+    // Debug logging for duration check
+    if (process.env.NODE_ENV === 'development') {
+      console.debug('[WinkNavigator] Wink held:', {
+        direction,
+        duration: `${duration}ms`,
+        required: `${calibration.winkDuration}ms`,
+        canTrigger: duration >= calibration.winkDuration && !isWinkingRef.current,
+        alreadyTriggered: isWinkingRef.current,
+      })
+    }
+
     if (duration >= calibration.winkDuration && !isWinkingRef.current) {
       isWinkingRef.current = true
+      console.log('[WinkNavigator] WINK DETECTED:', direction)
       handleWink(direction)
     }
-  }, [blinkScores, classifyWink, isNaturalBlink, calibration.winkDuration, handleWink])
+  }, [blinkScores, classifyWink, isNaturalBlink, calibration.winkDuration, calibration.highThreshold, calibration.lowThreshold, settings.isCalibrated, handleWink])
 
   return null // This component doesn't render anything
 }

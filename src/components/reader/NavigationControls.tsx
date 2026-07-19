@@ -58,9 +58,18 @@ export function NavigationControls() {
         <span className="text-xs text-muted-foreground">Fit:</span>
         <div className="flex gap-1">
           <Button
+            variant={fitMode === "auto" ? "secondary" : "ghost"}
+            size="sm"
+            onClick={() => setFitMode("auto")}
+            title="Fit entire page"
+          >
+            Auto
+          </Button>
+          <Button
             variant={fitMode === "width" ? "secondary" : "ghost"}
             size="sm"
             onClick={() => setFitMode("width")}
+            title="Fit to width"
           >
             Width
           </Button>
@@ -68,6 +77,7 @@ export function NavigationControls() {
             variant={fitMode === "height" ? "secondary" : "ghost"}
             size="sm"
             onClick={() => setFitMode("height")}
+            title="Fit to height"
           >
             Height
           </Button>

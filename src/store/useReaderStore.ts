@@ -94,7 +94,7 @@ export const useReaderStore = create<ReaderState>()(
       pdfFileName: null,
       currentPage: 1,
       totalPages: 0,
-      fitMode: 'width',
+      fitMode: 'auto', // Fit entire page on screen
 
       isCameraActive: false,
       cameraPermission: 'pending',
