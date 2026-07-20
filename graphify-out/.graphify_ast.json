@@ -1,0 +1,1910 @@
+{
+  "nodes": [
+    {
+      "id": "app_layout_rootlayout",
+      "label": "RootLayout",
+      "file_type": "code",
+      "source_file": "app/layout.tsx",
+      "source_location": "L24",
+      "_origin": "ast"
+    },
+    {
+      "id": "components_reader_camerapreview_camerapreview",
+      "label": "CameraPreview",
+      "file_type": "code",
+      "source_file": "components/reader/CameraPreview.tsx",
+      "source_location": "L15",
+      "_origin": "ast"
+    },
+    {
+      "id": "components_reader_pdfviewer_pdfviewer",
+      "label": "PdfViewer",
+      "file_type": "code",
+      "source_file": "components/reader/PdfViewer.tsx",
+      "source_location": "L19",
+      "_origin": "ast"
+    },
+    {
+      "id": "components_reader_performancemode_usewakelock",
+      "label": "useWakeLock",
+      "file_type": "code",
+      "source_file": "components/reader/PerformanceMode.tsx",
+      "source_location": "L8",
+      "_origin": "ast"
+    },
+    {
+      "id": "components_reader_winknavigator_winknavigator",
+      "label": "WinkNavigator",
+      "file_type": "code",
+      "source_file": "components/reader/WinkNavigator.tsx",
+      "source_location": "L14",
+      "_origin": "ast"
+    },
+    {
+      "id": "components_ui_button_buttonprops",
+      "label": "ButtonProps",
+      "file_type": "code",
+      "source_file": "components/ui/button.tsx",
+      "source_location": "L38",
+      "_origin": "ast"
+    },
+    {
+      "id": "components_ui_input_inputprops",
+      "label": "InputProps",
+      "file_type": "code",
+      "source_file": "components/ui/input.tsx",
+      "source_location": "L5",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_facetracking_types_faceblinkscores",
+      "label": "FaceBlinkScores",
+      "file_type": "code",
+      "source_file": "lib/faceTracking/types.ts",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_facetracking_types_eyelandmarks",
+      "label": "EyeLandmarks",
+      "file_type": "code",
+      "source_file": "lib/faceTracking/types.ts",
+      "source_location": "L7",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_facetracking_types_facedetectionresult",
+      "label": "FaceDetectionResult",
+      "file_type": "code",
+      "source_file": "lib/faceTracking/types.ts",
+      "source_location": "L12",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_facetracking_types_winkdirection",
+      "label": "WinkDirection",
+      "file_type": "code",
+      "source_file": "lib/faceTracking/types.ts",
+      "source_location": "L18",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_facetracking_types_winkevent",
+      "label": "WinkEvent",
+      "file_type": "code",
+      "source_file": "lib/faceTracking/types.ts",
+      "source_location": "L20",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_facetracking_types_calibrationdata",
+      "label": "CalibrationData",
+      "file_type": "code",
+      "source_file": "lib/faceTracking/types.ts",
+      "source_location": "L26",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_facetracking_types_calibrationresult",
+      "label": "CalibrationResult",
+      "file_type": "code",
+      "source_file": "lib/faceTracking/types.ts",
+      "source_location": "L32",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_facetracking_types_cameradevice",
+      "label": "CameraDevice",
+      "file_type": "code",
+      "source_file": "lib/faceTracking/types.ts",
+      "source_location": "L38",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_facetracking_usefacelandmarker_usefacelandmarker",
+      "label": "useFaceLandmarker",
+      "file_type": "code",
+      "source_file": "lib/faceTracking/useFaceLandmarker.ts",
+      "source_location": "L30",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_facetracking_winkclassifier_usewinkclassifier",
+      "label": "useWinkClassifier",
+      "file_type": "code",
+      "source_file": "lib/faceTracking/winkClassifier.ts",
+      "source_location": "L10",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_facetracking_winkclassifier_calculatecalibrationresult",
+      "label": "calculateCalibrationResult",
+      "file_type": "code",
+      "source_file": "lib/faceTracking/winkClassifier.ts",
+      "source_location": "L78",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_miditoscore_buildmusicxml_buildmusicxml",
+      "label": "buildMusicXml",
+      "file_type": "code",
+      "source_file": "lib/midiToScore/buildMusicXml.ts",
+      "source_location": "L442",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_miditoscore_buildmusicxml_buildsimpletestxml",
+      "label": "buildSimpleTestXml",
+      "file_type": "code",
+      "source_file": "lib/midiToScore/buildMusicXml.ts",
+      "source_location": "L490",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_miditoscore_chunkmeasures_chunkoptions",
+      "label": "ChunkOptions",
+      "file_type": "code",
+      "source_file": "lib/midiToScore/chunkMeasures.ts",
+      "source_location": "L15",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_miditoscore_chunkmeasures_chunkmeasures",
+      "label": "chunkMeasures",
+      "file_type": "code",
+      "source_file": "lib/midiToScore/chunkMeasures.ts",
+      "source_location": "L25",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_miditoscore_chunkmeasures_getchunkcount",
+      "label": "getChunkCount",
+      "file_type": "code",
+      "source_file": "lib/midiToScore/chunkMeasures.ts",
+      "source_location": "L88",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_miditoscore_chunkmeasures_getmeasurerangeforpage",
+      "label": "getMeasureRangeForPage",
+      "file_type": "code",
+      "source_file": "lib/midiToScore/chunkMeasures.ts",
+      "source_location": "L96",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_miditoscore_chunkmeasures_validatechunks",
+      "label": "validateChunks",
+      "file_type": "code",
+      "source_file": "lib/midiToScore/chunkMeasures.ts",
+      "source_location": "L111",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_miditoscore_chunkmeasures_getchunkmeasurecount",
+      "label": "getChunkMeasureCount",
+      "file_type": "code",
+      "source_file": "lib/midiToScore/chunkMeasures.ts",
+      "source_location": "L145",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_miditoscore_chunkmeasures_getchunkatpage",
+      "label": "getChunkAtPage",
+      "file_type": "code",
+      "source_file": "lib/midiToScore/chunkMeasures.ts",
+      "source_location": "L153",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_miditoscore_chunkmeasures_getuniquetimesignatures",
+      "label": "getUniqueTimeSignatures",
+      "file_type": "code",
+      "source_file": "lib/midiToScore/chunkMeasures.ts",
+      "source_location": "L167",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_miditoscore_chunkmeasures_hastimesignaturechanges",
+      "label": "hasTimeSignatureChanges",
+      "file_type": "code",
+      "source_file": "lib/midiToScore/chunkMeasures.ts",
+      "source_location": "L191",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_miditoscore_keydetection_detectkey",
+      "label": "detectKey",
+      "file_type": "code",
+      "source_file": "lib/midiToScore/keyDetection.ts",
+      "source_location": "L85",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_miditoscore_keydetection_getkeyname",
+      "label": "getKeyName",
+      "file_type": "code",
+      "source_file": "lib/midiToScore/keyDetection.ts",
+      "source_location": "L154",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_miditoscore_keydetection_getclefforkey",
+      "label": "getClefForKey",
+      "file_type": "code",
+      "source_file": "lib/midiToScore/keyDetection.ts",
+      "source_location": "L183",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_miditoscore_keydetection_determineclef",
+      "label": "determineClef",
+      "file_type": "code",
+      "source_file": "lib/midiToScore/keyDetection.ts",
+      "source_location": "L206",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_miditoscore_parsemidi_parsemidi",
+      "label": "parseMidi",
+      "file_type": "code",
+      "source_file": "lib/midiToScore/parseMidi.ts",
+      "source_location": "L17",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_miditoscore_parsemidi_gettempoattick",
+      "label": "getTempoAtTick",
+      "file_type": "code",
+      "source_file": "lib/midiToScore/parseMidi.ts",
+      "source_location": "L89",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_miditoscore_parsemidi_gettimesignatureattick",
+      "label": "getTimeSignatureAtTick",
+      "file_type": "code",
+      "source_file": "lib/midiToScore/parseMidi.ts",
+      "source_location": "L107",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_miditoscore_parsemidi_tickstoseconds",
+      "label": "ticksToSeconds",
+      "file_type": "code",
+      "source_file": "lib/midiToScore/parseMidi.ts",
+      "source_location": "L125",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_miditoscore_parsemidi_secondstoticks",
+      "label": "secondsToTicks",
+      "file_type": "code",
+      "source_file": "lib/midiToScore/parseMidi.ts",
+      "source_location": "L138",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_miditoscore_parsemidi_getmididuration",
+      "label": "getMidiDuration",
+      "file_type": "code",
+      "source_file": "lib/midiToScore/parseMidi.ts",
+      "source_location": "L149",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_miditoscore_parsemidi_flattennotes",
+      "label": "flattenNotes",
+      "file_type": "code",
+      "source_file": "lib/midiToScore/parseMidi.ts",
+      "source_location": "L165",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_miditoscore_quantize_quantizenotes",
+      "label": "quantizeNotes",
+      "file_type": "code",
+      "source_file": "lib/midiToScore/quantize.ts",
+      "source_location": "L228",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_miditoscore_quantize_mergecompatibleparts",
+      "label": "mergeCompatibleParts",
+      "file_type": "code",
+      "source_file": "lib/midiToScore/quantize.ts",
+      "source_location": "L370",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_miditoscore_types_quantgrid",
+      "label": "QuantGrid",
+      "file_type": "code",
+      "source_file": "lib/midiToScore/types.ts",
+      "source_location": "L5",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_miditoscore_types_cleftype",
+      "label": "ClefType",
+      "file_type": "code",
+      "source_file": "lib/midiToScore/types.ts",
+      "source_location": "L7",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_miditoscore_types_keysignature",
+      "label": "KeySignature",
+      "file_type": "code",
+      "source_file": "lib/midiToScore/types.ts",
+      "source_location": "L9",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_miditoscore_types_midinote",
+      "label": "MidiNote",
+      "file_type": "code",
+      "source_file": "lib/midiToScore/types.ts",
+      "source_location": "L14",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_miditoscore_types_quantizednote",
+      "label": "QuantizedNote",
+      "file_type": "code",
+      "source_file": "lib/midiToScore/types.ts",
+      "source_location": "L23",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_miditoscore_types_timesignatureevent",
+      "label": "TimeSignatureEvent",
+      "file_type": "code",
+      "source_file": "lib/midiToScore/types.ts",
+      "source_location": "L30",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_miditoscore_types_tempoevent",
+      "label": "TempoEvent",
+      "file_type": "code",
+      "source_file": "lib/midiToScore/types.ts",
+      "source_location": "L36",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_miditoscore_types_track",
+      "label": "Track",
+      "file_type": "code",
+      "source_file": "lib/midiToScore/types.ts",
+      "source_location": "L41",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_miditoscore_types_parsedmidi",
+      "label": "ParsedMidi",
+      "file_type": "code",
+      "source_file": "lib/midiToScore/types.ts",
+      "source_location": "L49",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_miditoscore_types_measure",
+      "label": "Measure",
+      "file_type": "code",
+      "source_file": "lib/midiToScore/types.ts",
+      "source_location": "L58",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_miditoscore_types_part",
+      "label": "Part",
+      "file_type": "code",
+      "source_file": "lib/midiToScore/types.ts",
+      "source_location": "L66",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_miditoscore_types_measurechunk",
+      "label": "MeasureChunk",
+      "file_type": "code",
+      "source_file": "lib/midiToScore/types.ts",
+      "source_location": "L75",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_miditoscore_types_chunkoptions",
+      "label": "ChunkOptions",
+      "file_type": "code",
+      "source_file": "lib/midiToScore/types.ts",
+      "source_location": "L87",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_miditoscore_types_midipitchclass",
+      "label": "midiPitchClass",
+      "file_type": "code",
+      "source_file": "lib/midiToScore/types.ts",
+      "source_location": "L100",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_miditoscore_types_midioctave",
+      "label": "midiOctave",
+      "file_type": "code",
+      "source_file": "lib/midiToScore/types.ts",
+      "source_location": "L108",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_miditoscore_types_miditoscientificpitch",
+      "label": "midiToScientificPitch",
+      "file_type": "code",
+      "source_file": "lib/midiToScore/types.ts",
+      "source_location": "L115",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_miditoscore_types_scientificpitchtomidi",
+      "label": "scientificPitchToMidi",
+      "file_type": "code",
+      "source_file": "lib/midiToScore/types.ts",
+      "source_location": "L126",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_storage_db_scoremetadata",
+      "label": "ScoreMetadata",
+      "file_type": "code",
+      "source_file": "lib/storage/db.ts",
+      "source_location": "L4",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_storage_db_storedscore",
+      "label": "StoredScore",
+      "file_type": "code",
+      "source_file": "lib/storage/db.ts",
+      "source_location": "L19",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_storage_db_midichunkcache",
+      "label": "MidiChunkCache",
+      "file_type": "code",
+      "source_file": "lib/storage/db.ts",
+      "source_location": "L26",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_storage_db_savescore",
+      "label": "saveScore",
+      "file_type": "code",
+      "source_file": "lib/storage/db.ts",
+      "source_location": "L80",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_storage_db_savemiditolibrary",
+      "label": "saveMidiToLibrary",
+      "file_type": "code",
+      "source_file": "lib/storage/db.ts",
+      "source_location": "L110",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_storage_db_getscore",
+      "label": "getScore",
+      "file_type": "code",
+      "source_file": "lib/storage/db.ts",
+      "source_location": "L152",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_storage_db_getmidiscore",
+      "label": "getMidiScore",
+      "file_type": "code",
+      "source_file": "lib/storage/db.ts",
+      "source_location": "L179",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_storage_db_getcachedmidichunks",
+      "label": "getCachedMidiChunks",
+      "file_type": "code",
+      "source_file": "lib/storage/db.ts",
+      "source_location": "L209",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_storage_db_cachemidichunks",
+      "label": "cacheMidiChunks",
+      "file_type": "code",
+      "source_file": "lib/storage/db.ts",
+      "source_location": "L224",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_storage_db_clearmidichunkcache",
+      "label": "clearMidiChunkCache",
+      "file_type": "code",
+      "source_file": "lib/storage/db.ts",
+      "source_location": "L244",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_storage_db_getallscores",
+      "label": "getAllScores",
+      "file_type": "code",
+      "source_file": "lib/storage/db.ts",
+      "source_location": "L255",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_storage_db_deletescore",
+      "label": "deleteScore",
+      "file_type": "code",
+      "source_file": "lib/storage/db.ts",
+      "source_location": "L266",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_storage_db_deletemidiscore",
+      "label": "deleteMidiScore",
+      "file_type": "code",
+      "source_file": "lib/storage/db.ts",
+      "source_location": "L279",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_storage_db_updatescoreprogress",
+      "label": "updateScoreProgress",
+      "file_type": "code",
+      "source_file": "lib/storage/db.ts",
+      "source_location": "L292",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_storage_db_updatescoremetadata",
+      "label": "updateScoreMetadata",
+      "file_type": "code",
+      "source_file": "lib/storage/db.ts",
+      "source_location": "L306",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_storage_db_clearlibrary",
+      "label": "clearLibrary",
+      "file_type": "code",
+      "source_file": "lib/storage/db.ts",
+      "source_location": "L322",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_storage_db_generatethumbnail",
+      "label": "generateThumbnail",
+      "file_type": "code",
+      "source_file": "lib/storage/db.ts",
+      "source_location": "L329",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_utils_cn",
+      "label": "cn",
+      "file_type": "code",
+      "source_file": "lib/utils.ts",
+      "source_location": "L4",
+      "_origin": "ast"
+    },
+    {
+      "id": "store_usereaderstore_calibrationthresholds",
+      "label": "CalibrationThresholds",
+      "file_type": "code",
+      "source_file": "store/useReaderStore.ts",
+      "source_location": "L5",
+      "_origin": "ast"
+    },
+    {
+      "id": "store_usereaderstore_camerasettings",
+      "label": "CameraSettings",
+      "file_type": "code",
+      "source_file": "store/useReaderStore.ts",
+      "source_location": "L12",
+      "_origin": "ast"
+    },
+    {
+      "id": "store_usereaderstore_navigationsettings",
+      "label": "NavigationSettings",
+      "file_type": "code",
+      "source_file": "store/useReaderStore.ts",
+      "source_location": "L19",
+      "_origin": "ast"
+    },
+    {
+      "id": "store_usereaderstore_readersettings",
+      "label": "ReaderSettings",
+      "file_type": "code",
+      "source_file": "store/useReaderStore.ts",
+      "source_location": "L24",
+      "_origin": "ast"
+    }
+  ],
+  "edges": [
+    {
+      "source": "lib_miditoscore_index",
+      "target": "lib_miditoscore_types",
+      "relation": "re_exports",
+      "context": "export",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/midiToScore/index.ts",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "lib_miditoscore_index",
+      "target": "lib_miditoscore_parsemidi",
+      "relation": "re_exports",
+      "context": "export",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/midiToScore/index.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "lib_miditoscore_index",
+      "target": "lib_miditoscore_keydetection",
+      "relation": "re_exports",
+      "context": "export",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/midiToScore/index.ts",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "lib_miditoscore_index",
+      "target": "lib_miditoscore_quantize",
+      "relation": "re_exports",
+      "context": "export",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/midiToScore/index.ts",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "lib_miditoscore_index",
+      "target": "lib_miditoscore_chunkmeasures",
+      "relation": "re_exports",
+      "context": "export",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/midiToScore/index.ts",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "lib_miditoscore_index",
+      "target": "lib_miditoscore_buildmusicxml",
+      "relation": "re_exports",
+      "context": "export",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/midiToScore/index.ts",
+      "source_location": "L19",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "app_reader_page",
+      "target": "components_reader_pdfviewer_pdfviewer",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/reader/page.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "app_reader_page",
+      "target": "components_reader_camerapreview_camerapreview",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/reader/page.tsx",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "app_reader_page",
+      "target": "components_reader_winknavigator_winknavigator",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/reader/page.tsx",
+      "source_location": "L15",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "app_reader_page",
+      "target": "lib_facetracking_types_faceblinkscores",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/reader/page.tsx",
+      "source_location": "L18",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "app_reader_page",
+      "target": "lib_miditoscore_types_quantgrid",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/reader/page.tsx",
+      "source_location": "L19",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "app_reader_page",
+      "target": "lib_miditoscore_parsemidi_parsemidi",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/reader/page.tsx",
+      "source_location": "L20",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "app_reader_page",
+      "target": "lib_miditoscore_keydetection_detectkey",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/reader/page.tsx",
+      "source_location": "L20",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "app_reader_page",
+      "target": "lib_miditoscore_quantize_quantizenotes",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/reader/page.tsx",
+      "source_location": "L20",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "app_reader_page",
+      "target": "lib_miditoscore_chunkmeasures_chunkmeasures",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/reader/page.tsx",
+      "source_location": "L20",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "app_reader_page",
+      "target": "lib_miditoscore_buildmusicxml_buildmusicxml",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/reader/page.tsx",
+      "source_location": "L20",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "components_reader_calibrationwizard",
+      "target": "lib_facetracking_winkclassifier_calculatecalibrationresult",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/reader/CalibrationWizard.tsx",
+      "source_location": "L16",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "components_reader_calibrationwizard",
+      "target": "lib_facetracking_types_faceblinkscores",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/reader/CalibrationWizard.tsx",
+      "source_location": "L17",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "components_reader_calibrationwizard",
+      "target": "lib_facetracking_types_calibrationdata",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/reader/CalibrationWizard.tsx",
+      "source_location": "L17",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "components_reader_camerapermissiondialog",
+      "target": "lib_facetracking_types_cameradevice",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/reader/CameraPermissionDialog.tsx",
+      "source_location": "L14",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "components_reader_camerapreview",
+      "target": "lib_facetracking_usefacelandmarker_usefacelandmarker",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/reader/CameraPreview.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "components_reader_camerapreview",
+      "target": "lib_facetracking_types_faceblinkscores",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/reader/CameraPreview.tsx",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "components_reader_library",
+      "target": "lib_storage_db_scoremetadata",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/reader/Library.tsx",
+      "source_location": "L15",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "components_reader_midiupload",
+      "target": "lib_utils_cn",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/reader/MidiUpload.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "components_reader_midiupload",
+      "target": "lib_miditoscore_types_quantgrid",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/reader/MidiUpload.tsx",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "components_reader_pagethumbnails",
+      "target": "lib_utils_cn",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/reader/PageThumbnails.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "components_reader_pdfupload",
+      "target": "lib_utils_cn",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/reader/PdfUpload.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "components_reader_unifiedupload",
+      "target": "lib_utils_cn",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/reader/UnifiedUpload.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "components_reader_unifiedupload",
+      "target": "lib_miditoscore_types_quantgrid",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/reader/UnifiedUpload.tsx",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "components_reader_winknavigator",
+      "target": "lib_facetracking_types_faceblinkscores",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/reader/WinkNavigator.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "components_reader_winknavigator",
+      "target": "lib_facetracking_types_winkdirection",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/reader/WinkNavigator.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "components_reader_winknavigator",
+      "target": "lib_facetracking_winkclassifier_usewinkclassifier",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/reader/WinkNavigator.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "components_ui_button",
+      "target": "lib_utils_cn",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/ui/button.tsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "components_ui_dialog",
+      "target": "lib_utils_cn",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/ui/dialog.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "components_ui_input",
+      "target": "lib_utils_cn",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/ui/input.tsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "components_ui_label",
+      "target": "lib_utils_cn",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/ui/label.tsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "components_ui_progress",
+      "target": "lib_utils_cn",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/ui/progress.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "components_ui_sheet",
+      "target": "lib_utils_cn",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/ui/sheet.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "components_ui_slider",
+      "target": "lib_utils_cn",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/ui/slider.tsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "components_ui_switch",
+      "target": "lib_utils_cn",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/ui/switch.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "components_ui_tabs",
+      "target": "lib_utils_cn",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/ui/tabs.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "lib_facetracking_usefacelandmarker",
+      "target": "lib_facetracking_types_faceblinkscores",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/faceTracking/useFaceLandmarker.ts",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "lib_facetracking_usefacelandmarker",
+      "target": "lib_facetracking_types_eyelandmarks",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/faceTracking/useFaceLandmarker.ts",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "lib_facetracking_winkclassifier",
+      "target": "lib_facetracking_types_faceblinkscores",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/faceTracking/winkClassifier.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "lib_facetracking_winkclassifier",
+      "target": "lib_facetracking_types_calibrationdata",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/faceTracking/winkClassifier.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "lib_facetracking_winkclassifier",
+      "target": "lib_facetracking_types_calibrationresult",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/faceTracking/winkClassifier.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "lib_miditoscore_tests_buildmusicxml_test",
+      "target": "lib_miditoscore_buildmusicxml_buildmusicxml",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/midiToScore/__tests__/buildMusicXml.test.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "lib_miditoscore_tests_buildmusicxml_test",
+      "target": "lib_miditoscore_types_measurechunk",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/midiToScore/__tests__/buildMusicXml.test.ts",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "lib_miditoscore_tests_buildmusicxml_test",
+      "target": "lib_miditoscore_types_quantizednote",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/midiToScore/__tests__/buildMusicXml.test.ts",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "lib_miditoscore_tests_chunkmeasures_test",
+      "target": "lib_miditoscore_chunkmeasures_chunkmeasures",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/midiToScore/__tests__/chunkMeasures.test.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "lib_miditoscore_tests_chunkmeasures_test",
+      "target": "lib_miditoscore_chunkmeasures_getchunkcount",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/midiToScore/__tests__/chunkMeasures.test.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "lib_miditoscore_tests_chunkmeasures_test",
+      "target": "lib_miditoscore_chunkmeasures_getmeasurerangeforpage",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/midiToScore/__tests__/chunkMeasures.test.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "lib_miditoscore_tests_chunkmeasures_test",
+      "target": "lib_miditoscore_chunkmeasures_validatechunks",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/midiToScore/__tests__/chunkMeasures.test.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "lib_miditoscore_tests_chunkmeasures_test",
+      "target": "lib_miditoscore_chunkmeasures_getchunkmeasurecount",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/midiToScore/__tests__/chunkMeasures.test.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "lib_miditoscore_tests_chunkmeasures_test",
+      "target": "lib_miditoscore_chunkmeasures_getchunkatpage",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/midiToScore/__tests__/chunkMeasures.test.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "lib_miditoscore_tests_chunkmeasures_test",
+      "target": "lib_miditoscore_types_part",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/midiToScore/__tests__/chunkMeasures.test.ts",
+      "source_location": "L14",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "lib_miditoscore_tests_chunkmeasures_test",
+      "target": "lib_miditoscore_types_measure",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/midiToScore/__tests__/chunkMeasures.test.ts",
+      "source_location": "L14",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "lib_miditoscore_tests_chunkmeasures_test",
+      "target": "lib_miditoscore_types_quantizednote",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/midiToScore/__tests__/chunkMeasures.test.ts",
+      "source_location": "L14",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "lib_miditoscore_tests_keydetection_test",
+      "target": "lib_miditoscore_keydetection_detectkey",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/midiToScore/__tests__/keyDetection.test.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "lib_miditoscore_tests_keydetection_test",
+      "target": "lib_miditoscore_keydetection_getkeyname",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/midiToScore/__tests__/keyDetection.test.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "lib_miditoscore_tests_keydetection_test",
+      "target": "lib_miditoscore_types_midinote",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/midiToScore/__tests__/keyDetection.test.ts",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "lib_miditoscore_tests_pipeline_test",
+      "target": "lib_miditoscore_parsemidi_parsemidi",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/midiToScore/__tests__/pipeline.test.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "lib_miditoscore_tests_pipeline_test",
+      "target": "lib_miditoscore_keydetection_detectkey",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/midiToScore/__tests__/pipeline.test.ts",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "lib_miditoscore_tests_pipeline_test",
+      "target": "lib_miditoscore_quantize_quantizenotes",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/midiToScore/__tests__/pipeline.test.ts",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "lib_miditoscore_tests_pipeline_test",
+      "target": "lib_miditoscore_chunkmeasures_chunkmeasures",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/midiToScore/__tests__/pipeline.test.ts",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "lib_miditoscore_tests_pipeline_test",
+      "target": "lib_miditoscore_buildmusicxml_buildmusicxml",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/midiToScore/__tests__/pipeline.test.ts",
+      "source_location": "L10",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "lib_miditoscore_tests_quantize_test",
+      "target": "lib_miditoscore_quantize_quantizenotes",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/midiToScore/__tests__/quantize.test.ts",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "lib_miditoscore_tests_quantize_test",
+      "target": "lib_miditoscore_types_parsedmidi",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/midiToScore/__tests__/quantize.test.ts",
+      "source_location": "L10",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "lib_miditoscore_tests_quantize_test",
+      "target": "lib_miditoscore_types_midinote",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/midiToScore/__tests__/quantize.test.ts",
+      "source_location": "L10",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "lib_miditoscore_tests_quantize_test",
+      "target": "lib_miditoscore_types_track",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/midiToScore/__tests__/quantize.test.ts",
+      "source_location": "L10",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "lib_miditoscore_tests_quantize_test",
+      "target": "lib_miditoscore_types_tempoevent",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/midiToScore/__tests__/quantize.test.ts",
+      "source_location": "L10",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "lib_miditoscore_tests_quantize_test",
+      "target": "lib_miditoscore_types_timesignatureevent",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/midiToScore/__tests__/quantize.test.ts",
+      "source_location": "L10",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "lib_miditoscore_buildmusicxml",
+      "target": "lib_miditoscore_types_measurechunk",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/midiToScore/buildMusicXml.ts",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "lib_miditoscore_buildmusicxml",
+      "target": "lib_miditoscore_types_part",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/midiToScore/buildMusicXml.ts",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "lib_miditoscore_buildmusicxml",
+      "target": "lib_miditoscore_types_measure",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/midiToScore/buildMusicXml.ts",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "lib_miditoscore_buildmusicxml",
+      "target": "lib_miditoscore_types_quantizednote",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/midiToScore/buildMusicXml.ts",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "lib_miditoscore_buildmusicxml",
+      "target": "lib_miditoscore_types_keysignature",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/midiToScore/buildMusicXml.ts",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "lib_miditoscore_buildmusicxml",
+      "target": "lib_miditoscore_types_cleftype",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/midiToScore/buildMusicXml.ts",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "lib_miditoscore_buildmusicxml",
+      "target": "lib_miditoscore_types_miditoscientificpitch",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/midiToScore/buildMusicXml.ts",
+      "source_location": "L16",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "lib_miditoscore_chunkmeasures",
+      "target": "lib_miditoscore_types_part",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/midiToScore/chunkMeasures.ts",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "lib_miditoscore_chunkmeasures",
+      "target": "lib_miditoscore_types_measure",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/midiToScore/chunkMeasures.ts",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "lib_miditoscore_chunkmeasures",
+      "target": "lib_miditoscore_types_measurechunk",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/midiToScore/chunkMeasures.ts",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "lib_miditoscore_chunkmeasures",
+      "target": "lib_miditoscore_types_keysignature",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/midiToScore/chunkMeasures.ts",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "lib_miditoscore_chunkmeasures",
+      "target": "lib_miditoscore_types_cleftype",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/midiToScore/chunkMeasures.ts",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "lib_miditoscore_keydetection",
+      "target": "lib_miditoscore_types_midipitchclass",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/midiToScore/keyDetection.ts",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "lib_miditoscore_keydetection",
+      "target": "lib_miditoscore_types_midinote",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/midiToScore/keyDetection.ts",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "lib_miditoscore_keydetection",
+      "target": "lib_miditoscore_types_keysignature",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/midiToScore/keyDetection.ts",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "lib_miditoscore_parsemidi",
+      "target": "lib_miditoscore_types_parsedmidi",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/midiToScore/parseMidi.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "lib_miditoscore_parsemidi",
+      "target": "lib_miditoscore_types_track",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/midiToScore/parseMidi.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "lib_miditoscore_parsemidi",
+      "target": "lib_miditoscore_types_midinote",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/midiToScore/parseMidi.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "lib_miditoscore_parsemidi",
+      "target": "lib_miditoscore_types_tempoevent",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/midiToScore/parseMidi.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "lib_miditoscore_parsemidi",
+      "target": "lib_miditoscore_types_timesignatureevent",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/midiToScore/parseMidi.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "lib_miditoscore_quantize",
+      "target": "lib_miditoscore_types_parsedmidi",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/midiToScore/quantize.ts",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "lib_miditoscore_quantize",
+      "target": "lib_miditoscore_types_midinote",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/midiToScore/quantize.ts",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "lib_miditoscore_quantize",
+      "target": "lib_miditoscore_types_quantizednote",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/midiToScore/quantize.ts",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "lib_miditoscore_quantize",
+      "target": "lib_miditoscore_types_measure",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/midiToScore/quantize.ts",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "lib_miditoscore_quantize",
+      "target": "lib_miditoscore_types_part",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/midiToScore/quantize.ts",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "lib_miditoscore_quantize",
+      "target": "lib_miditoscore_types_quantgrid",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/midiToScore/quantize.ts",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "lib_miditoscore_quantize",
+      "target": "lib_miditoscore_parsemidi_gettimesignatureattick",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/midiToScore/quantize.ts",
+      "source_location": "L13",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "lib_storage_db",
+      "target": "lib_miditoscore_types_keysignature",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/storage/db.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "store_usereaderstore",
+      "target": "lib_miditoscore_types_keysignature",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "store/useReaderStore.ts",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "d_project_aplikasiweb_next_js_blinkscoreweb_src_components_reader_calibrationwizard_handlenextstep",
+      "target": "lib_facetracking_winkclassifier_calculatecalibrationresult",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "components/reader/CalibrationWizard.tsx",
+      "source_location": "L121",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "d_project_aplikasiweb_next_js_blinkscoreweb_src_lib_miditoscore_keydetection_computepitchclassdistribution",
+      "target": "lib_miditoscore_types_midipitchclass",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/midiToScore/keyDetection.ts",
+      "source_location": "L44",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "d_project_aplikasiweb_next_js_blinkscoreweb_src_components_reader_camerapreview_camerapreviewprops",
+      "target": "lib_facetracking_types_faceblinkscores",
+      "relation": "references",
+      "context": "field",
+      "confidence": "EXTRACTED",
+      "source_file": "components/reader/CameraPreview.tsx",
+      "source_location": "L11",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "d_project_aplikasiweb_next_js_blinkscoreweb_src_components_reader_midiupload_midiuploadprops",
+      "target": "lib_miditoscore_types_quantgrid",
+      "relation": "references",
+      "context": "field",
+      "confidence": "EXTRACTED",
+      "source_file": "components/reader/MidiUpload.tsx",
+      "source_location": "L11",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "d_project_aplikasiweb_next_js_blinkscoreweb_src_components_reader_unifiedupload_unifieduploadprops",
+      "target": "lib_miditoscore_types_quantgrid",
+      "relation": "references",
+      "context": "field",
+      "confidence": "EXTRACTED",
+      "source_file": "components/reader/UnifiedUpload.tsx",
+      "source_location": "L14",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "d_project_aplikasiweb_next_js_blinkscoreweb_src_components_reader_winknavigator_winknavigatorprops",
+      "target": "lib_facetracking_types_faceblinkscores",
+      "relation": "references",
+      "context": "field",
+      "confidence": "EXTRACTED",
+      "source_file": "components/reader/WinkNavigator.tsx",
+      "source_location": "L10",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "d_project_aplikasiweb_next_js_blinkscoreweb_src_components_reader_winknavigator_winknavigatorprops",
+      "target": "lib_facetracking_types_winkdirection",
+      "relation": "references",
+      "context": "field",
+      "confidence": "EXTRACTED",
+      "source_file": "components/reader/WinkNavigator.tsx",
+      "source_location": "L11",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "d_project_aplikasiweb_next_js_blinkscoreweb_src_lib_facetracking_usefacelandmarker_usefacelandmarkeroptions",
+      "target": "lib_facetracking_types_faceblinkscores",
+      "relation": "references",
+      "context": "field",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/faceTracking/useFaceLandmarker.ts",
+      "source_location": "L10",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "d_project_aplikasiweb_next_js_blinkscoreweb_src_lib_facetracking_usefacelandmarker_usefacelandmarkeroptions",
+      "target": "lib_facetracking_types_eyelandmarks",
+      "relation": "references",
+      "context": "field",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/faceTracking/useFaceLandmarker.ts",
+      "source_location": "L11",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "d_project_aplikasiweb_next_js_blinkscoreweb_src_lib_facetracking_usefacelandmarker_usefacelandmarkerreturn",
+      "target": "lib_facetracking_types_faceblinkscores",
+      "relation": "references",
+      "context": "field",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/faceTracking/useFaceLandmarker.ts",
+      "source_location": "L24",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "lib_miditoscore_types_quantizednote",
+      "target": "lib_miditoscore_types_midinote",
+      "relation": "inherits",
+      "context": "type",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/midiToScore/types.ts",
+      "source_location": "L23",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "lib_storage_db_scoremetadata",
+      "target": "lib_miditoscore_types_keysignature",
+      "relation": "references",
+      "context": "field",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/storage/db.ts",
+      "source_location": "L15",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "d_project_aplikasiweb_next_js_blinkscoreweb_src_store_usereaderstore_readerstate",
+      "target": "lib_miditoscore_types_keysignature",
+      "relation": "references",
+      "context": "field",
+      "confidence": "EXTRACTED",
+      "source_file": "store/useReaderStore.ts",
+      "source_location": "L41",
+      "weight": 1.0,
+      "_origin": "ast"
+    }
+  ],
+  "input_tokens": 0,
+  "output_tokens": 0
+}

@@ -1,0 +1,115 @@
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    from multiprocessing.spawn import spawn_main; spawn_main(parent_pid=57536, pipe_handle=460)
+                                                  ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Akhma\AppData\Local\Python\pythoncore-3.14-64\Lib\multiprocessing\spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+  File "C:\Users\Akhma\AppData\Local\Python\pythoncore-3.14-64\Lib\multiprocessing\spawn.py", line 131, in _main
+    prepare(preparation_data)
+    ~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Akhma\AppData\Local\Python\pythoncore-3.14-64\Lib\multiprocessing\spawn.py", line 246, in prepare
+    _fixup_main_from_path(data['init_main_from_path'])
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Akhma\AppData\Local\Python\pythoncore-3.14-64\Lib\multiprocessing\spawn.py", line 297, in _fixup_main_from_path
+    main_content = runpy.run_path(main_path,
+                                  run_name="__mp_main__")
+  File "<frozen runpy>", line 294, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "D:\Project_AplikasiWeb\Next.JS\blinkscoreweb\graphify-out\step3a_ast.py", line 12, in <module>
+    result = extract(code_files, cache_root=Path(r'D:\Project_AplikasiWeb\Next.JS\blinkscoreweb\src'))
+  File "C:\Users\Akhma\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\graphify\extract.py", line 4395, in extract
+    ran_parallel = _extract_parallel(
+        uncached_work, per_file, root, max_workers, total, cache_location
+    )
+  File "C:\Users\Akhma\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\graphify\extract.py", line 4212, in _extract_parallel
+    pool.submit(_extract_single_file, item): pos
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Akhma\AppData\Local\Python\pythoncore-3.14-64\Lib\concurrent\futures\process.py", line 818, in submit
+    self._adjust_process_count()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Akhma\AppData\Local\Python\pythoncore-3.14-64\Lib\concurrent\futures\process.py", line 777, in _adjust_process_count
+    self._spawn_process()
+    ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Akhma\AppData\Local\Python\pythoncore-3.14-64\Lib\concurrent\futures\process.py", line 795, in _spawn_process
+    p.start()
+    ~~~~~~~^^
+  File "C:\Users\Akhma\AppData\Local\Python\pythoncore-3.14-64\Lib\multiprocessing\process.py", line 121, in start
+    self._popen = self._Popen(self)
+                  ~~~~~~~~~~~^^^^^^
+  File "C:\Users\Akhma\AppData\Local\Python\pythoncore-3.14-64\Lib\multiprocessing\context.py", line 343, in _Popen
+    return Popen(process_obj)
+  File "C:\Users\Akhma\AppData\Local\Python\pythoncore-3.14-64\Lib\multiprocessing\popen_spawn_win32.py", line 47, in __init__
+    prep_data = spawn.get_preparation_data(process_obj._name)
+  File "C:\Users\Akhma\AppData\Local\Python\pythoncore-3.14-64\Lib\multiprocessing\spawn.py", line 164, in get_preparation_data
+    _check_not_importing_main()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Akhma\AppData\Local\Python\pythoncore-3.14-64\Lib\multiprocessing\spawn.py", line 140, in _check_not_importing_main
+    raise RuntimeError('''
+    ...<16 lines>...
+    ''')
+RuntimeError: 
+        An attempt has been made to start a new process before the
+        current process has finished its bootstrapping phase.
+
+        This probably means that you are not using fork to start your
+        child processes and you have forgotten to use the proper idiom
+        in the main module:
+
+            if __name__ == '__main__':
+                freeze_support()
+                ...
+
+        The "freeze_support()" line can be omitted if the program
+        is not going to be frozen to produce an executable.
+
+        To fix this issue, refer to the "Safe importing of main module"
+        section in https://docs.python.org/3/library/multiprocessing.html
+        
+  warning: worker failed for D:\Project_AplikasiWeb\Next.JS\blinkscoreweb\src\app\layout.tsx: A process in the process pool was terminated abruptly while the future was running or pending.
+  warning: worker failed for D:\Project_AplikasiWeb\Next.JS\blinkscoreweb\src\app\page.tsx: A process in the process pool was terminated abruptly while the future was running or pending.
+  warning: worker failed for D:\Project_AplikasiWeb\Next.JS\blinkscoreweb\src\app\reader\page.tsx: A process in the process pool was terminated abruptly while the future was running or pending.
+  warning: worker failed for D:\Project_AplikasiWeb\Next.JS\blinkscoreweb\src\components\reader\CalibrationWizard.tsx: A process in the process pool was terminated abruptly while the future was running or pending.
+  warning: worker failed for D:\Project_AplikasiWeb\Next.JS\blinkscoreweb\src\components\reader\CameraPermissionDialog.tsx: A process in the process pool was terminated abruptly while the future was running or pending.
+  warning: worker failed for D:\Project_AplikasiWeb\Next.JS\blinkscoreweb\src\components\reader\CameraPreview.tsx: A process in the process pool was terminated abruptly while the future was running or pending.
+  warning: worker failed for D:\Project_AplikasiWeb\Next.JS\blinkscoreweb\src\components\reader\Library.tsx: A process in the process pool was terminated abruptly while the future was running or pending.
+  warning: worker failed for D:\Project_AplikasiWeb\Next.JS\blinkscoreweb\src\components\reader\MidiScoreViewer.tsx: A process in the process pool was terminated abruptly while the future was running or pending.
+  warning: worker failed for D:\Project_AplikasiWeb\Next.JS\blinkscoreweb\src\components\reader\MidiUpload.tsx: A process in the process pool was terminated abruptly while the future was running or pending.
+  warning: worker failed for D:\Project_AplikasiWeb\Next.JS\blinkscoreweb\src\components\reader\NavigationControls.tsx: A process in the process pool was terminated abruptly while the future was running or pending.
+  warning: worker failed for D:\Project_AplikasiWeb\Next.JS\blinkscoreweb\src\components\reader\PageThumbnails.tsx: A process in the process pool was terminated abruptly while the future was running or pending.
+  warning: worker failed for D:\Project_AplikasiWeb\Next.JS\blinkscoreweb\src\components\reader\PdfUpload.tsx: A process in the process pool was terminated abruptly while the future was running or pending.
+  warning: worker failed for D:\Project_AplikasiWeb\Next.JS\blinkscoreweb\src\components\reader\PdfViewer.tsx: A process in the process pool was terminated abruptly while the future was running or pending.
+  warning: worker failed for D:\Project_AplikasiWeb\Next.JS\blinkscoreweb\src\components\reader\PerformanceMode.tsx: A process in the process pool was terminated abruptly while the future was running or pending.
+  warning: worker failed for D:\Project_AplikasiWeb\Next.JS\blinkscoreweb\src\components\reader\SettingsPanel.tsx: A process in the process pool was terminated abruptly while the future was running or pending.
+  warning: worker failed for D:\Project_AplikasiWeb\Next.JS\blinkscoreweb\src\components\reader\UnifiedUpload.tsx: A process in the process pool was terminated abruptly while the future was running or pending.
+  warning: worker failed for D:\Project_AplikasiWeb\Next.JS\blinkscoreweb\src\components\reader\WinkNavigator.tsx: A process in the process pool was terminated abruptly while the future was running or pending.
+  warning: worker failed for D:\Project_AplikasiWeb\Next.JS\blinkscoreweb\src\components\ui\button.tsx: A process in the process pool was terminated abruptly while the future was running or pending.
+  warning: worker failed for D:\Project_AplikasiWeb\Next.JS\blinkscoreweb\src\components\ui\dialog.tsx: A process in the process pool was terminated abruptly while the future was running or pending.
+  warning: worker failed for D:\Project_AplikasiWeb\Next.JS\blinkscoreweb\src\components\ui\input.tsx: A process in the process pool was terminated abruptly while the future was running or pending.
+  warning: worker failed for D:\Project_AplikasiWeb\Next.JS\blinkscoreweb\src\components\ui\label.tsx: A process in the process pool was terminated abruptly while the future was running or pending.
+  warning: worker failed for D:\Project_AplikasiWeb\Next.JS\blinkscoreweb\src\components\ui\progress.tsx: A process in the process pool was terminated abruptly while the future was running or pending.
+  warning: worker failed for D:\Project_AplikasiWeb\Next.JS\blinkscoreweb\src\components\ui\sheet.tsx: A process in the process pool was terminated abruptly while the future was running or pending.
+  warning: worker failed for D:\Project_AplikasiWeb\Next.JS\blinkscoreweb\src\components\ui\slider.tsx: A process in the process pool was terminated abruptly while the future was running or pending.
+  warning: worker failed for D:\Project_AplikasiWeb\Next.JS\blinkscoreweb\src\components\ui\switch.tsx: A process in the process pool was terminated abruptly while the future was running or pending.
+  warning: worker failed for D:\Project_AplikasiWeb\Next.JS\blinkscoreweb\src\components\ui\tabs.tsx: A process in the process pool was terminated abruptly while the future was running or pending.
+  warning: worker failed for D:\Project_AplikasiWeb\Next.JS\blinkscoreweb\src\components\ui\toaster.tsx: A process in the process pool was terminated abruptly while the future was running or pending.
+  warning: worker failed for D:\Project_AplikasiWeb\Next.JS\blinkscoreweb\src\lib\faceTracking\types.ts: A process in the process pool was terminated abruptly while the future was running or pending.
+  warning: worker failed for D:\Project_AplikasiWeb\Next.JS\blinkscoreweb\src\lib\faceTracking\useFaceLandmarker.ts: A process in the process pool was terminated abruptly while the future was running or pending.
+  warning: worker failed for D:\Project_AplikasiWeb\Next.JS\blinkscoreweb\src\lib\faceTracking\winkClassifier.ts: A process in the process pool was terminated abruptly while the future was running or pending.
+  warning: worker failed for D:\Project_AplikasiWeb\Next.JS\blinkscoreweb\src\lib\midiToScore\__tests__\buildMusicXml.test.ts: A process in the process pool was terminated abruptly while the future was running or pending.
+  warning: worker failed for D:\Project_AplikasiWeb\Next.JS\blinkscoreweb\src\lib\midiToScore\__tests__\chunkMeasures.test.ts: A process in the process pool was terminated abruptly while the future was running or pending.
+  warning: worker failed for D:\Project_AplikasiWeb\Next.JS\blinkscoreweb\src\lib\midiToScore\__tests__\keyDetection.test.ts: A process in the process pool was terminated abruptly while the future was running or pending.
+  warning: worker failed for D:\Project_AplikasiWeb\Next.JS\blinkscoreweb\src\lib\midiToScore\__tests__\pipeline.test.ts: A process in the process pool was terminated abruptly while the future was running or pending.
+  warning: worker failed for D:\Project_AplikasiWeb\Next.JS\blinkscoreweb\src\lib\midiToScore\__tests__\quantize.test.ts: A process in the process pool was terminated abruptly while the future was running or pending.
+  warning: worker failed for D:\Project_AplikasiWeb\Next.JS\blinkscoreweb\src\lib\midiToScore\buildMusicXml.ts: A process in the process pool was terminated abruptly while the future was running or pending.
+  warning: worker failed for D:\Project_AplikasiWeb\Next.JS\blinkscoreweb\src\lib\midiToScore\chunkMeasures.ts: A process in the process pool was terminated abruptly while the future was running or pending.
+  warning: worker failed for D:\Project_AplikasiWeb\Next.JS\blinkscoreweb\src\lib\midiToScore\index.ts: A process in the process pool was terminated abruptly while the future was running or pending.
+  warning: worker failed for D:\Project_AplikasiWeb\Next.JS\blinkscoreweb\src\lib\midiToScore\keyDetection.ts: A process in the process pool was terminated abruptly while the future was running or pending.
+  warning: worker failed for D:\Project_AplikasiWeb\Next.JS\blinkscoreweb\src\lib\midiToScore\parseMidi.ts: A process in the process pool was terminated abruptly while the future was running or pending.
+  warning: worker failed for D:\Project_AplikasiWeb\Next.JS\blinkscoreweb\src\lib\midiToScore\quantize.ts: A process in the process pool was terminated abruptly while the future was running or pending.
+  warning: worker failed for D:\Project_AplikasiWeb\Next.JS\blinkscoreweb\src\lib\midiToScore\types.ts: A process in the process pool was terminated abruptly while the future was running or pending.
+  warning: worker failed for D:\Project_AplikasiWeb\Next.JS\blinkscoreweb\src\lib\storage\db.ts: A process in the process pool was terminated abruptly while the future was running or pending.
+  warning: worker failed for D:\Project_AplikasiWeb\Next.JS\blinkscoreweb\src\lib\utils.ts: A process in the process pool was terminated abruptly while the future was running or pending.
+  warning: worker failed for D:\Project_AplikasiWeb\Next.JS\blinkscoreweb\src\store\useReaderStore.ts: A process in the process pool was terminated abruptly while the future was running or pending.
+  warning: 45 source file(s) produced zero nodes and are absent from the graph: layout.tsx, page.tsx, page.tsx, CalibrationWizard.tsx, CameraPermissionDialog.tsx (+40 more). A re-run will retry them (empties are no longer cached); if it persists, please report the file(s) (#1666).
+AST: 81 nodes, 114 edges

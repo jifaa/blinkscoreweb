@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect, useCallback } from "react"
-import { Library, Trash2, FileText, Clock, BookOpen } from "lucide-react"
+import { Library, Trash2, FileText, Music, Clock, BookOpen } from "lucide-react"
 import { Button } from "~/components/ui/button"
 import {
   Dialog,
@@ -88,7 +88,7 @@ export function LibraryDialog({ open, onOpenChange, onSelectScore }: LibraryDial
               <BookOpen className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
               <p className="text-muted-foreground">No scores in your library yet.</p>
               <p className="text-sm text-muted-foreground mt-2">
-                Upload a PDF to get started!
+                Upload a PDF or MIDI to get started!
               </p>
             </div>
           ) : (
@@ -98,7 +98,7 @@ export function LibraryDialog({ open, onOpenChange, onSelectScore }: LibraryDial
                   key={score.id}
                   className="flex items-center gap-4 p-4 rounded-lg border hover:bg-muted/50 transition-colors group"
                 >
-                  {/* Thumbnail */}
+                  {/* Thumbnail or Type Icon */}
                   <div className="w-16 h-20 bg-muted rounded flex items-center justify-center flex-shrink-0 overflow-hidden">
                     {score.thumbnail ? (
                       <img
@@ -106,6 +106,8 @@ export function LibraryDialog({ open, onOpenChange, onSelectScore }: LibraryDial
                         alt=""
                         className="w-full h-full object-cover"
                       />
+                    ) : score.contentType === "midi" ? (
+                      <Music className="w-6 h-6 text-primary" />
                     ) : (
                       <FileText className="w-6 h-6 text-muted-foreground" />
                     )}
@@ -116,8 +118,17 @@ export function LibraryDialog({ open, onOpenChange, onSelectScore }: LibraryDial
                     <h3 className="font-medium truncate">{score.name}</h3>
                     <div className="flex items-center gap-4 text-sm text-muted-foreground mt-1">
                       <span className="flex items-center gap-1">
-                        <FileText className="w-3 h-3" />
-                        {score.totalPages} pages
+                        {score.contentType === "midi" ? (
+                          <>
+                            <Music className="w-3 h-3" />
+                            MIDI ({score.totalPages} pages)
+                          </>
+                        ) : (
+                          <>
+                            <FileText className="w-3 h-3" />
+                            PDF ({score.totalPages} pages)
+                          </>
+                        )}
                       </span>
                       <span className="flex items-center gap-1">
                         <Clock className="w-3 h-3" />
@@ -127,6 +138,16 @@ export function LibraryDialog({ open, onOpenChange, onSelectScore }: LibraryDial
                     {score.currentPage > 1 && (
                       <p className="text-xs text-primary mt-1">
                         Page {score.currentPage} of {score.totalPages}
+                      </p>
+                    )}
+                    {score.contentType === "midi" && score.midiKeySignature && (
+                      <p className="text-xs text-muted-foreground mt-1">
+                        Key: {score.midiKeySignature.mode === "major"
+                          ? `${score.midiKeySignature.fifths === 0 ? "C" : score.midiKeySignature.fifths > 0 ? ["G", "D", "A", "E", "B", "F#", "C#"][score.midiKeySignature.fifths - 1] : ["F", "Bb", "Eb", "Ab", "Db", "Gb"][Math.abs(score.midiKeySignature.fifths) - 1]
+                          } major`
+                          : `${score.midiKeySignature.fifths === 0 ? "A" : score.midiKeySignature.fifths > 0 ? ["E", "B", "F#", "C#", "G#", "D#", "A#"][score.midiKeySignature.fifths - 1] : ["D", "G", "C", "F", "Bb", "Eb"][Math.abs(score.midiKeySignature.fifths) - 1]
+                          } minor`
+                        }
                       </p>
                     )}
                   </div>
@@ -185,7 +206,7 @@ export function LibraryDialog({ open, onOpenChange, onSelectScore }: LibraryDial
 
 // Hook to manage library in reader
 export function useLibrary() {
-  const { setPdf } = useReaderStore()
+  const { setPdf, setMidi } = useReaderStore()
 
   const saveToLibrary = useCallback(
     async (file: File, totalPages: number) => {
@@ -212,21 +233,46 @@ export function useLibrary() {
   const loadFromLibrary = useCallback(
     async (id: string) => {
       try {
-        const { getScore } = await import("~/lib/storage/db")
-        const result = await getScore(id)
+        const { getScore, getMidiScore, getCachedMidiChunks } = await import("~/lib/storage/db")
 
-        if (result) {
-          setPdf(result.pdfUrl, result.metadata.name, result.metadata.totalPages)
-          useReaderStore.setState({ currentPage: result.metadata.currentPage })
+        // Try to load as PDF first
+        const pdfResult = await getScore(id)
+        if (pdfResult) {
+          setPdf(pdfResult.pdfUrl, pdfResult.metadata.name, pdfResult.metadata.totalPages)
+          useReaderStore.setState({ currentPage: pdfResult.metadata.currentPage })
           return true
         }
+
+        // Try to load as MIDI
+        const midiResult = await getMidiScore(id)
+        if (midiResult) {
+          // Check cache first
+          const cachedChunks = await getCachedMidiChunks(id)
+          if (cachedChunks) {
+            // Use cached chunks - skip quantization
+            setMidi(
+              cachedChunks,
+              midiResult.metadata.midiKeySignature || null,
+              midiResult.metadata.name,
+              midiResult.metadata.midiQuantGrid || "auto"
+            )
+            useReaderStore.setState({ currentPage: midiResult.metadata.currentPage })
+            return true
+          }
+
+          // No cache - user needs to re-process (could show error here)
+          console.warn("MIDI cache not found, file needs re-processing")
+          alert("MIDI cache not found. Please re-upload the file.")
+          return false
+        }
+
         return false
       } catch (err) {
         console.error("Error loading from library:", err)
         return false
       }
     },
-    [setPdf]
+    [setPdf, setMidi]
   )
 
   return {

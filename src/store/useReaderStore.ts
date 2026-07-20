@@ -1,5 +1,6 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
+import type { KeySignature } from '~/lib/midiToScore/types'
 
 export interface CalibrationThresholds {
   highThreshold: number
@@ -28,11 +29,24 @@ export interface ReaderSettings {
 }
 
 interface ReaderState {
-  // PDF state
+  // Content type - controls which viewer is shown
+  contentType: 'pdf' | 'midi' | null
+
+  // PDF state (used when contentType === 'pdf')
   pdfUrl: string | null
   pdfFileName: string | null
+
+  // MIDI state (used when contentType === 'midi')
+  midiChunks: string[]  // Array of MusicXML documents (one per page)
+  midiKeySignature: KeySignature | null
+  midiScoreName: string | null
+  midiQuantGrid: string | null  // Store which grid was used for quantization
+
+  // Navigation state (shared by PDF and MIDI)
   currentPage: number
   totalPages: number
+
+  // Fit mode (primarily for PDF, may be used for MIDI too)
   fitMode: 'width' | 'height' | 'auto'
 
   // Camera state
@@ -46,8 +60,12 @@ interface ReaderState {
   // Settings
   settings: ReaderSettings
 
-  // Actions
+  // Content actions
   setPdf: (url: string | null, fileName: string | null, totalPages: number) => void
+  setMidi: (chunks: string[], keySignature: KeySignature | null, scoreName: string, quantGrid: string) => void
+  clearContent: () => void
+
+  // Navigation actions
   setCurrentPage: (page: number) => void
   nextPage: () => void
   prevPage: () => void
@@ -89,9 +107,20 @@ const defaultSettings: ReaderSettings = {
 export const useReaderStore = create<ReaderState>()(
   persist(
     (set, get) => ({
-      // Initial state
+      // Content type
+      contentType: null,
+
+      // PDF state
       pdfUrl: null,
       pdfFileName: null,
+
+      // MIDI state
+      midiChunks: [],
+      midiKeySignature: null,
+      midiScoreName: null,
+      midiQuantGrid: null,
+
+      // Navigation state
       currentPage: 1,
       totalPages: 0,
       fitMode: 'auto', // Fit entire page on screen
@@ -104,9 +133,47 @@ export const useReaderStore = create<ReaderState>()(
 
       settings: defaultSettings,
 
-      // Actions
+      // Content actions
       setPdf: (url, fileName, totalPages) =>
-        set({ pdfUrl: url, pdfFileName: fileName, totalPages, currentPage: 1 }),
+        set({
+          contentType: 'pdf',
+          pdfUrl: url,
+          pdfFileName: fileName,
+          totalPages,
+          currentPage: 1,
+          // Clear MIDI state
+          midiChunks: [],
+          midiKeySignature: null,
+          midiScoreName: null,
+          midiQuantGrid: null,
+        }),
+
+      setMidi: (chunks, keySignature, scoreName, quantGrid) =>
+        set({
+          contentType: 'midi',
+          midiChunks: chunks,
+          midiKeySignature: keySignature,
+          midiScoreName: scoreName,
+          midiQuantGrid: quantGrid,
+          totalPages: chunks.length,
+          currentPage: 1,
+          // Clear PDF state
+          pdfUrl: null,
+          pdfFileName: null,
+        }),
+
+      clearContent: () =>
+        set({
+          contentType: null,
+          pdfUrl: null,
+          pdfFileName: null,
+          midiChunks: [],
+          midiKeySignature: null,
+          midiScoreName: null,
+          midiQuantGrid: null,
+          currentPage: 1,
+          totalPages: 0,
+        }),
 
       setCurrentPage: (page) => {
         const { totalPages } = get()

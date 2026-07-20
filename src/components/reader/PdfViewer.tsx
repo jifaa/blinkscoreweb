@@ -115,11 +115,13 @@ export function PdfViewer({ pdfUrl, onTotalPages }: PdfViewerProps) {
       let viewport = page.getViewport({ scale: 1 })
       let scale = 1
 
+      // Always fit the whole page within the container (no scroll needed)
       if (state.currentFitMode === "width") {
         scale = containerWidth / viewport.width
       } else if (state.currentFitMode === "height") {
         scale = containerHeight / viewport.height
       } else {
+        // 'auto': fit entire page — scale down to smallest dimension so nothing is cut off
         const scaleWidth = containerWidth / viewport.width
         const scaleHeight = containerHeight / viewport.height
         scale = Math.min(scaleWidth, scaleHeight)
@@ -225,7 +227,7 @@ export function PdfViewer({ pdfUrl, onTotalPages }: PdfViewerProps) {
   return (
     <div
       ref={containerRef}
-      className="flex items-center justify-center h-full w-full overflow-auto p-4"
+      className="flex items-center justify-center flex-1 min-h-0 w-full overflow-hidden"
     >
       <canvas
         ref={canvasRef}
@@ -233,6 +235,8 @@ export function PdfViewer({ pdfUrl, onTotalPages }: PdfViewerProps) {
         style={{
           maxWidth: "100%",
           maxHeight: "100%",
+          objectFit: "contain",
+          display: "block",
         }}
       />
     </div>

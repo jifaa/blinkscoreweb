@@ -6,7 +6,7 @@ import { Button } from "~/components/ui/button"
 import { useReaderStore } from "~/store/useReaderStore"
 
 export function NavigationControls() {
-  const { currentPage, totalPages, nextPage, prevPage, setFitMode, fitMode } = useReaderStore()
+  const { contentType, currentPage, totalPages, nextPage, prevPage, setFitMode, fitMode } = useReaderStore()
 
   // Keyboard navigation
   useEffect(() => {
@@ -25,6 +25,9 @@ export function NavigationControls() {
     window.addEventListener("keydown", handleKeyDown)
     return () => window.removeEventListener("keydown", handleKeyDown)
   }, [nextPage, prevPage])
+
+  // Fit mode is only relevant for PDF content
+  const showFitMode = contentType === "pdf"
 
   return (
     <div className="flex items-center gap-2">
@@ -59,39 +62,41 @@ export function NavigationControls() {
         <ChevronRight className="h-4 w-4" />
       </Button>
 
-      {/* Fit Mode Controls - Stitch Segmented Control */}
-      <div className="ml-4 border-l border-border pl-4 flex items-center gap-2">
-        <span className="text-xs text-muted-foreground font-mono">Fit:</span>
-        <div className="flex gap-1 bg-secondary border border-border rounded-sm p-0.5">
-          <Button
-            variant={fitMode === "auto" ? "default" : "ghost"}
-            size="sm"
-            className={fitMode !== "auto" ? "text-muted-foreground hover:text-foreground" : ""}
-            onClick={() => setFitMode("auto")}
-            title="Fit entire page"
-          >
-            Auto
-          </Button>
-          <Button
-            variant={fitMode === "width" ? "default" : "ghost"}
-            size="sm"
-            className={fitMode !== "width" ? "text-muted-foreground hover:text-foreground" : ""}
-            onClick={() => setFitMode("width")}
-            title="Fit to width"
-          >
-            Width
-          </Button>
-          <Button
-            variant={fitMode === "height" ? "default" : "ghost"}
-            size="sm"
-            className={fitMode !== "height" ? "text-muted-foreground hover:text-foreground" : ""}
-            onClick={() => setFitMode("height")}
-            title="Fit to height"
-          >
-            Height
-          </Button>
+      {/* Fit Mode Controls - only show for PDF content */}
+      {showFitMode && (
+        <div className="border-l border-border pl-4 flex items-center gap-2">
+          <span className="text-xs text-muted-foreground font-mono">Fit:</span>
+          <div className="flex gap-1 bg-secondary border border-border rounded-sm p-0.5">
+            <Button
+              variant={fitMode === "auto" ? "default" : "ghost"}
+              size="sm"
+              className={fitMode !== "auto" ? "text-muted-foreground hover:text-foreground" : ""}
+              onClick={() => setFitMode("auto")}
+              title="Fit entire page"
+            >
+              Auto
+            </Button>
+            <Button
+              variant={fitMode === "width" ? "default" : "ghost"}
+              size="sm"
+              className={fitMode !== "width" ? "text-muted-foreground hover:text-foreground" : ""}
+              onClick={() => setFitMode("width")}
+              title="Fit to width"
+            >
+              Width
+            </Button>
+            <Button
+              variant={fitMode === "height" ? "default" : "ghost"}
+              size="sm"
+              className={fitMode !== "height" ? "text-muted-foreground hover:text-foreground" : ""}
+              onClick={() => setFitMode("height")}
+              title="Fit to height"
+            >
+              Height
+            </Button>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   )
 }

@@ -1,0 +1,6 @@
+D:\Project_AplikasiWeb\Next.JS\blinkscoreweb\graphify-out\step3a_ast.py: line 1: import: command not found
+D:\Project_AplikasiWeb\Next.JS\blinkscoreweb\graphify-out\step3a_ast.py: line 2: from: command not found
+D:\Project_AplikasiWeb\Next.JS\blinkscoreweb\graphify-out\step3a_ast.py: line 3: from: command not found
+D:\Project_AplikasiWeb\Next.JS\blinkscoreweb\graphify-out\step3a_ast.py: line 4: import: command not found
+D:\Project_AplikasiWeb\Next.JS\blinkscoreweb\graphify-out\step3a_ast.py: line 8: syntax error near unexpected token `('
+D:\Project_AplikasiWeb\Next.JS\blinkscoreweb\graphify-out\step3a_ast.py: line 8: `    detect = json.loads(Path(r'graphify-out/.graphify_detect.json').read_text(encoding='utf-8', errors='replace'))'
